@@ -1,0 +1,423 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 10,
+    "passes": 5,
+    "pending": 0,
+    "failures": 5,
+    "start": "2024-11-18T21:32:34.547Z",
+    "end": "2024-11-18T21:32:47.041Z",
+    "duration": 12494,
+    "testsRegistered": 10,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93dd8199-a7d1-498b-a11e-7ec14f27e34c",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+          "title": "Delete EXperience from User Profile Functionality Test",
+          "fullFile": "C:\\Users\\talla\\OneDrive\\Desktop\\Laxmi\\MEng\\ENSF608\\hire-wire-test-script\\test\\deleteExperience.js",
+          "file": "\\test\\deleteExperience.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Delete EXperience from User Profile Functionality Test\"",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test \"before all\" hook in \"Delete EXperience from User Profile Functionality Test\"",
+              "timedOut": false,
+              "duration": 1397,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    driver = await new Builder().forBrowser('chrome').build();\n} catch (error) {\n    console.error('Error initializing WebDriver:', error);\n}",
+              "err": {},
+              "uuid": "9737ef77-b288-416c-88f1-68db72fa1792",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Delete EXperience from User Profile Functionality Test\"",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test \"after all\" hook in \"Delete EXperience from User Profile Functionality Test\"",
+              "timedOut": false,
+              "duration": 142,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await driver.quit();\n} catch (error) {\n    console.error('Error quitting the WebDriver:', error);\n}",
+              "err": {},
+              "uuid": "184a13b9-affe-408a-bf0d-f78e147161fe",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook in \"Delete EXperience from User Profile Functionality Test\"",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test \"after each\" hook in \"Delete EXperience from User Profile Functionality Test\"",
+              "timedOut": false,
+              "duration": 94,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();",
+              "err": {},
+              "uuid": "bd248350-fbc2-45e2-8ca4-2139227a700a",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "User  1",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test User  1",
+              "timedOut": false,
+              "duration": 1715,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n    // Wait for dashboard\n    await driver.wait(until.urlContains(DASHBOARD_URL), 5000);\n    const currentUrl = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl.includes(DASHBOARD_URL), true, `User ${index + 1} should be on the dashboard page`);\n\n    // Navigate to profile page\n    await navigateToExperiencePage();\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"remove-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n} catch (error) {\n    console.error(`Error in User Profile Test ${index + 1}:`, error);\n}",
+              "err": {},
+              "uuid": "237cb149-c9e2-4212-9867-88548511465d",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User  2",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test User  2",
+              "timedOut": false,
+              "duration": 895,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n    // Wait for dashboard\n    await driver.wait(until.urlContains(DASHBOARD_URL), 5000);\n    const currentUrl = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl.includes(DASHBOARD_URL), true, `User ${index + 1} should be on the dashboard page`);\n\n    // Navigate to profile page\n    await navigateToExperiencePage();\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"remove-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n} catch (error) {\n    console.error(`Error in User Profile Test ${index + 1}:`, error);\n}",
+              "err": {},
+              "uuid": "319a92ba-9fc5-478f-a52d-65bdd5bd50cb",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User  3",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test User  3",
+              "timedOut": false,
+              "duration": 844,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n    // Wait for dashboard\n    await driver.wait(until.urlContains(DASHBOARD_URL), 5000);\n    const currentUrl = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl.includes(DASHBOARD_URL), true, `User ${index + 1} should be on the dashboard page`);\n\n    // Navigate to profile page\n    await navigateToExperiencePage();\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"remove-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n} catch (error) {\n    console.error(`Error in User Profile Test ${index + 1}:`, error);\n}",
+              "err": {},
+              "uuid": "711bc3a2-c9e0-4e32-9cd7-90a4343430b4",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User  4",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test User  4",
+              "timedOut": false,
+              "duration": 911,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n    // Wait for dashboard\n    await driver.wait(until.urlContains(DASHBOARD_URL), 5000);\n    const currentUrl = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl.includes(DASHBOARD_URL), true, `User ${index + 1} should be on the dashboard page`);\n\n    // Navigate to profile page\n    await navigateToExperiencePage();\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"remove-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n} catch (error) {\n    console.error(`Error in User Profile Test ${index + 1}:`, error);\n}",
+              "err": {},
+              "uuid": "22f90ada-96b3-492c-a4e4-522d0116c8d0",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User  5",
+              "fullTitle": "Delete EXperience from User Profile Functionality Test User  5",
+              "timedOut": false,
+              "duration": 888,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n    // Wait for dashboard\n    await driver.wait(until.urlContains(DASHBOARD_URL), 5000);\n    const currentUrl = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl.includes(DASHBOARD_URL), true, `User ${index + 1} should be on the dashboard page`);\n\n    // Navigate to profile page\n    await navigateToExperiencePage();\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"remove-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n} catch (error) {\n    console.error(`Error in User Profile Test ${index + 1}:`, error);\n}",
+              "err": {},
+              "uuid": "41e12331-8e02-4f34-a187-be693c99b8d0",
+              "parentUUID": "92a2f07e-3c4c-4979-bce8-1abfcae38a93",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "237cb149-c9e2-4212-9867-88548511465d",
+            "319a92ba-9fc5-478f-a52d-65bdd5bd50cb",
+            "711bc3a2-c9e0-4e32-9cd7-90a4343430b4",
+            "22f90ada-96b3-492c-a4e4-522d0116c8d0",
+            "41e12331-8e02-4f34-a187-be693c99b8d0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5253,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "c66a4ced-c28a-4e90-9336-374eb067d589",
+          "title": "User Profile Deletion Functionality Test",
+          "fullFile": "C:\\Users\\talla\\OneDrive\\Desktop\\Laxmi\\MEng\\ENSF608\\hire-wire-test-script\\test\\DeleteUserProfile.js",
+          "file": "\\test\\DeleteUserProfile.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"User Profile Deletion Functionality Test\"",
+              "fullTitle": "User Profile Deletion Functionality Test \"before all\" hook in \"User Profile Deletion Functionality Test\"",
+              "timedOut": false,
+              "duration": 1208,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    driver = await new Builder().forBrowser('chrome').build();\n} catch (error) {\n    console.error('Error initializing WebDriver:', error);\n}",
+              "err": {},
+              "uuid": "b9397355-846d-40d7-9b64-1c7b0fbdaa0d",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"User Profile Deletion Functionality Test\"",
+              "fullTitle": "User Profile Deletion Functionality Test \"after all\" hook in \"User Profile Deletion Functionality Test\"",
+              "timedOut": false,
+              "duration": 126,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await driver.quit();\n} catch (error) {\n    console.error('Error quitting the WebDriver:', error);\n}",
+              "err": {},
+              "uuid": "77b005f6-0dc6-4c54-b743-e661dc8edcbd",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook in \"User Profile Deletion Functionality Test\"",
+              "fullTitle": "User Profile Deletion Functionality Test \"after each\" hook in \"User Profile Deletion Functionality Test\"",
+              "timedOut": false,
+              "duration": 8,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();",
+              "err": {},
+              "uuid": "892d8e92-6f68-4313-b098-ae481b228b77",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "User Profile Test 1",
+              "fullTitle": "User Profile Deletion Functionality Test User Profile Test 1",
+              "timedOut": false,
+              "duration": 1343,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n\n    const currentUrl = await driver.getCurrentUrl();\n    \n    // Assert exact match of current URL with the expected URL\n    assert.strictEqual(currentUrl, DASHBOARD_URL, `User ${index + 1} user can not log in, user does not exist`);\n    \n    // Navigate to profile page\n    await navigateToProfilePage();\n\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"delete-user-profile-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n    // Wait for the alert pop-up to appear\n    await driver.wait(until.alertIsPresent(), 5000); // Adjust timeout if needed\n    const alert = await driver.switchTo().alert();\n    \n    // Press the OK button on the alert\n    await alert.accept();\n    //get current url after deleetion\n    const currentUrl2 = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl, currentUrl2, \"After Successful deletion of user the page should be directed to homepage\");",
+              "err": {
+                "message": "AssertionError: User 1 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'",
+                "estack": "AssertionError [ERR_ASSERTION]: User 1 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'\n    at Context.<anonymous> (test\\DeleteUserProfile.js:176:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- http://localhost:3000/hire-wire-front-end/login\n+ http://localhost:3000/hire-wire-front-end/jobapplication\n"
+              },
+              "uuid": "fbe925c8-1c2f-4453-966f-2c5b96765482",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User Profile Test 2",
+              "fullTitle": "User Profile Deletion Functionality Test User Profile Test 2",
+              "timedOut": false,
+              "duration": 614,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n\n    const currentUrl = await driver.getCurrentUrl();\n    \n    // Assert exact match of current URL with the expected URL\n    assert.strictEqual(currentUrl, DASHBOARD_URL, `User ${index + 1} user can not log in, user does not exist`);\n    \n    // Navigate to profile page\n    await navigateToProfilePage();\n\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"delete-user-profile-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n    // Wait for the alert pop-up to appear\n    await driver.wait(until.alertIsPresent(), 5000); // Adjust timeout if needed\n    const alert = await driver.switchTo().alert();\n    \n    // Press the OK button on the alert\n    await alert.accept();\n    //get current url after deleetion\n    const currentUrl2 = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl, currentUrl2, \"After Successful deletion of user the page should be directed to homepage\");",
+              "err": {
+                "message": "AssertionError: User 2 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'",
+                "estack": "AssertionError [ERR_ASSERTION]: User 2 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'\n    at Context.<anonymous> (test\\DeleteUserProfile.js:176:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- http://localhost:3000/hire-wire-front-end/login\n+ http://localhost:3000/hire-wire-front-end/jobapplication\n"
+              },
+              "uuid": "fb44964e-57df-4297-bccf-b5fcd91e4874",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User Profile Test 3",
+              "fullTitle": "User Profile Deletion Functionality Test User Profile Test 3",
+              "timedOut": false,
+              "duration": 605,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n\n    const currentUrl = await driver.getCurrentUrl();\n    \n    // Assert exact match of current URL with the expected URL\n    assert.strictEqual(currentUrl, DASHBOARD_URL, `User ${index + 1} user can not log in, user does not exist`);\n    \n    // Navigate to profile page\n    await navigateToProfilePage();\n\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"delete-user-profile-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n    // Wait for the alert pop-up to appear\n    await driver.wait(until.alertIsPresent(), 5000); // Adjust timeout if needed\n    const alert = await driver.switchTo().alert();\n    \n    // Press the OK button on the alert\n    await alert.accept();\n    //get current url after deleetion\n    const currentUrl2 = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl, currentUrl2, \"After Successful deletion of user the page should be directed to homepage\");",
+              "err": {
+                "message": "AssertionError: User 3 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'",
+                "estack": "AssertionError [ERR_ASSERTION]: User 3 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'\n    at Context.<anonymous> (test\\DeleteUserProfile.js:176:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- http://localhost:3000/hire-wire-front-end/login\n+ http://localhost:3000/hire-wire-front-end/jobapplication\n"
+              },
+              "uuid": "9bb7b3cc-65e5-430c-b01f-83a6f18b84b3",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User Profile Test 4",
+              "fullTitle": "User Profile Deletion Functionality Test User Profile Test 4",
+              "timedOut": false,
+              "duration": 622,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n\n    const currentUrl = await driver.getCurrentUrl();\n    \n    // Assert exact match of current URL with the expected URL\n    assert.strictEqual(currentUrl, DASHBOARD_URL, `User ${index + 1} user can not log in, user does not exist`);\n    \n    // Navigate to profile page\n    await navigateToProfilePage();\n\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"delete-user-profile-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n    // Wait for the alert pop-up to appear\n    await driver.wait(until.alertIsPresent(), 5000); // Adjust timeout if needed\n    const alert = await driver.switchTo().alert();\n    \n    // Press the OK button on the alert\n    await alert.accept();\n    //get current url after deleetion\n    const currentUrl2 = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl, currentUrl2, \"After Successful deletion of user the page should be directed to homepage\");",
+              "err": {
+                "message": "AssertionError: User 4 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'",
+                "estack": "AssertionError [ERR_ASSERTION]: User 4 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'\n    at Context.<anonymous> (test\\DeleteUserProfile.js:176:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- http://localhost:3000/hire-wire-front-end/login\n+ http://localhost:3000/hire-wire-front-end/jobapplication\n"
+              },
+              "uuid": "6b25c8d8-1e8e-4c4e-9986-4528e6219c6a",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User Profile Test 5",
+              "fullTitle": "User Profile Deletion Functionality Test User Profile Test 5",
+              "timedOut": false,
+              "duration": 625,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await logoutIfLoggedIn();\n    await navigateToLoginPage();\n    const loginButton = await driver.findElement(By.xpath('//button[contains(@class, \"login-button\")]'));\n    await loginButton.click();\n    // Login\n    await driver.findElement(By.xpath('//input[@placeholder=\"Email\"]')).sendKeys(user.emailAddress);\n    await driver.findElement(By.xpath('//input[@placeholder=\"Password\"]')).sendKeys(user.password);\n    const submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\n    await submitButton.click();\n\n    const currentUrl = await driver.getCurrentUrl();\n    \n    // Assert exact match of current URL with the expected URL\n    assert.strictEqual(currentUrl, DASHBOARD_URL, `User ${index + 1} user can not log in, user does not exist`);\n    \n    // Navigate to profile page\n    await navigateToProfilePage();\n\n    // Click delete Button\n    const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, \"delete-user-profile-button\") and @type=\"button\"]'));\n    await deleteButton.click();\n    // Wait for the alert pop-up to appear\n    await driver.wait(until.alertIsPresent(), 5000); // Adjust timeout if needed\n    const alert = await driver.switchTo().alert();\n    \n    // Press the OK button on the alert\n    await alert.accept();\n    //get current url after deleetion\n    const currentUrl2 = await driver.getCurrentUrl();\n    assert.strictEqual(currentUrl, currentUrl2, \"After Successful deletion of user the page should be directed to homepage\");",
+              "err": {
+                "message": "AssertionError: User 5 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'",
+                "estack": "AssertionError [ERR_ASSERTION]: User 5 user can not log in, user does not exist\n+ actual - expected\n\n+ 'http://localhost:3000/hire-wire-front-end/login'\n- 'http://localhost:3000/hire-wire-front-end/jobapplication'\n    at Context.<anonymous> (test\\DeleteUserProfile.js:176:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- http://localhost:3000/hire-wire-front-end/login\n+ http://localhost:3000/hire-wire-front-end/jobapplication\n"
+              },
+              "uuid": "04ba216e-6c42-4ee6-9578-02b5148caded",
+              "parentUUID": "c66a4ced-c28a-4e90-9336-374eb067d589",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "fbe925c8-1c2f-4453-966f-2c5b96765482",
+            "fb44964e-57df-4297-bccf-b5fcd91e4874",
+            "9bb7b3cc-65e5-430c-b01f-83a6f18b84b3",
+            "6b25c8d8-1e8e-4c4e-9986-4528e6219c6a",
+            "04ba216e-6c42-4ee6-9578-02b5148caded"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3809,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.8.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

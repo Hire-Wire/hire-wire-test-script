@@ -1,0 +1,42 @@
+[
+    {
+      "jobTitle": "Software Engineer",
+      "company": "Tech Corp",
+      "description": "Develop and maintain web applications using modern technologies.",
+      "additionalInformation": "Looking forward to contributing to innovative projects.",
+      "emailAddress": "woodhector@ucalgary.ca",
+      "password": "at#$qDpz1y"
+    },
+    {
+      "jobTitle": "Data Analyst",
+      "company": "Data Insights",
+      "description": "Analyze datasets to provide actionable business insights.",
+      "additionalInformation": "Proficient in Python and SQL.",
+      "emailAddress": "kkent@ucalgary.ca",
+      "password": "6GU4#v6qHj"
+    },
+    {
+      "jobTitle": "Project Manager",
+      "company": "Build Smart Ltd.",
+      "description": "Oversee project planning and execution for various teams.",
+      "additionalInformation": "Experienced in agile methodologies.",
+      "emailAddress": "toddhorne@example.com",
+      "password": "OQMo*@1w2d"
+    },
+    {
+      "jobTitle": "Graphic Designer",
+      "company": "Creative Studio",
+      "description": "Design visually appealing graphics for digital platforms.",
+      "additionalInformation": "Strong background in Adobe Photoshop and Illustrator.",
+      "emailAddress": "beckerolivia@business.net",
+      "password": "p13twzB$Yu"
+    },
+    {
+      "jobTitle": "Marketing Specialist",
+      "company": "Growth Media",
+      "description": "Develop marketing campaigns to boost brand visibility.",
+      "additionalInformation": "Expertise in SEO and social media marketing.",
+      "emailAddress": "susan42@ucalgary.ca",
+      "password": "gm!nFhmtb2"
+    }
+  ]

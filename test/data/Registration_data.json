@@ -1,0 +1,202 @@
+[
+    {
+        "firstName": "Nicole",
+        "lastName": "Sutton",
+        "phoneNumber": "949.449.0684",
+        "emailAddress": "woodhector@ucalgary.ca",
+        "password": "at#$qDpz1y",
+        "confirmPassword": "at#$qDpz1y"
+    },
+    {
+        "firstName": "Matthew",
+        "lastName": "Stewart",
+        "phoneNumber": "001-976-452-8281x59879",
+        "emailAddress": "kkent@ucalgary.ca",
+        "password": "6GU4#v6qHj",
+        "confirmPassword": "6GU4#v6qHj"
+    },
+    {
+        "firstName": "David",
+        "lastName": "Li",
+        "phoneNumber": "668-635-2035x111",
+        "emailAddress": "toddhorne@example.com",
+        "password": "OQMo*@1w2d",
+        "confirmPassword": "OQMo*@1w2d"
+    },
+    {
+        "firstName": "Nicholas",
+        "lastName": "Snyder",
+        "phoneNumber": "4039500078",
+        "emailAddress": "beckerolivia@business.net",
+        "password": "p13twzB$Yu",
+        "confirmPassword": "p13twzB$Yu"
+    },
+    {
+        "firstName": "Kendra",
+        "lastName": "Reynolds",
+        "phoneNumber": "205.537.6128x4498",
+        "emailAddress": "susan42@ucalgary.ca",
+        "password": "gm!nFhmtb2",
+        "confirmPassword": "gm!nFhmtb2"
+    },
+    {
+        "firstName": "Elizabeth",
+        "lastName": "Lopez",
+        "phoneNumber": "694-954-6272x24387",
+        "emailAddress": "alexanderjohnson@company.org",
+        "password": "5d*0&Modfh",
+        "confirmPassword": "5d*0&Modfh"
+    },
+    {
+        "firstName": "Brandy",
+        "lastName": "Jones",
+        "phoneNumber": "551-203-4652x3556",
+        "emailAddress": "simskevin@ucalgary.ca",
+        "password": "AAD5F$WdPv",
+        "confirmPassword": "AAD5F$WdPv"
+    },
+    {
+        "firstName": "Darrell",
+        "lastName": "Weiss",
+        "phoneNumber": "275-497-6987x7141",
+        "emailAddress": "markday@example.com",
+        "password": "F3Wn#3mSl6",
+        "confirmPassword": "F3Wn#3mSl6"
+    },
+    {
+        "firstName": "Jeffrey",
+        "lastName": "Stewart",
+        "phoneNumber": "379.707.9146x5785",
+        "emailAddress": "brian42@example.com",
+        "password": "pLgi0*EQGq",
+        "confirmPassword": "pLgi0*EQGq"
+    },
+    {
+        "firstName": "Brenda",
+        "lastName": "Wiley",
+        "phoneNumber": "903-487-4139",
+        "emailAddress": "michaelwilliams@example.com",
+        "password": "0X7dl1#9@w",
+        "confirmPassword": "0X7dl1#9@w"
+    },
+    {
+        "firstName": "Valerie",
+        "lastName": "Grant",
+        "phoneNumber": "+1-951-376-9272x500",
+        "emailAddress": "jamesdavid@gmail.com",
+        "password": "5d#8*EgXPJ",
+        "confirmPassword": "5d#8*EgXPJ"
+    },
+    {
+        "firstName": "Arthur",
+        "lastName": "Foster",
+        "phoneNumber": "489.564.8367",
+        "emailAddress": "dpeterson@business.net",
+        "password": "$4NU2K@Fzg",
+        "confirmPassword": "$4NU2K@Fzg"
+    },
+    {
+        "firstName": "Deborah",
+        "lastName": "Waller",
+        "phoneNumber": "641.847.6555x1700",
+        "emailAddress": "erinsmith@company.org",
+        "password": "*gYPg$gWs0",
+        "confirmPassword": "*gYPg$gWs0"
+    },
+    {
+        "firstName": "Julie",
+        "lastName": "Madden",
+        "phoneNumber": "(446)603-2306",
+        "emailAddress": "sandersbrian@example.com",
+        "password": "l8449qH&@Z",
+        "confirmPassword": "l8449qH&@Z"
+    },
+    {
+        "firstName": "Danielle",
+        "lastName": "Garcia",
+        "phoneNumber": "7662355650",
+        "emailAddress": "zbaker@business.net",
+        "password": "9$Wg8PzFB$",
+        "confirmPassword": "9$Wg8PzFB$"
+    },
+    {
+        "firstName": "Karen",
+        "lastName": "Rosales",
+        "phoneNumber": "874.266.5418",
+        "emailAddress": "stacy92@ucalgary.ca",
+        "password": "51#!nUQ7ny",
+        "confirmPassword": "51#!nUQ7ny"
+    },
+    {
+        "firstName": "Kimberly",
+        "lastName": "Parks",
+        "phoneNumber": "747.964.9173x4892",
+        "emailAddress": "wharris@gmail.com",
+        "password": "Vbi33Hs3o$",
+        "confirmPassword": "Vbi33Hs3o$"
+    },
+    {
+        "firstName": "Joshua",
+        "lastName": "Murray",
+        "phoneNumber": "685-698-6359",
+        "emailAddress": "ruizjonathan@business.net",
+        "password": "kK2LQS$SLs",
+        "confirmPassword": "kK2LQS$SLs"
+    },
+    {
+        "firstName": "Kyle",
+        "lastName": "Davis",
+        "phoneNumber": "(684)994-1139x014",
+        "emailAddress": "thomas19@gmail.com",
+        "password": "E@8&isLln&",
+        "confirmPassword": "E@8&isLln&"
+    },
+    {
+        "firstName": "Katie",
+        "lastName": "Ford",
+        "phoneNumber": "(487)602-8478x09170",
+        "emailAddress": "emorris@example.com",
+        "password": "a!ikycj9ZO",
+        "confirmPassword": "a!ikycj9ZO"
+    },
+    {
+        "firstName": "Jeff",
+        "lastName": "Wyatt",
+        "phoneNumber": "+1-338-254-6982x90464",
+        "emailAddress": "smithseth@example.com",
+        "password": "JlWTs7eFL@",
+        "confirmPassword": "JlWTs7eFL@"
+    },
+    {
+        "firstName": "Matthew",
+        "lastName": "Hughes",
+        "phoneNumber": "(991)371-0206",
+        "emailAddress": "kimberly48@gmail.com",
+        "password": "JwnEv5$0Yv",
+        "confirmPassword": "JwnEv5$0Yv"
+    },
+    {
+        "firstName": "Linda",
+        "lastName": "Shannon",
+        "phoneNumber": "001-820-519-7292",
+        "emailAddress": "nicholsonmichelle@gmail.com",
+        "password": "9PVPY3$yzB",
+        "confirmPassword": "9PVPY3$yzB"
+    },
+    {
+        "firstName": "Neil",
+        "lastName": "Miller",
+        "phoneNumber": "5538635511",
+        "emailAddress": "susan35@company.org",
+        "password": "7UdN1eC3@q",
+        "confirmPassword": "7UdN1eC3@q"
+    },
+    {
+        "firstName": "Terry",
+        "lastName": "Spencer",
+        "phoneNumber": "+1-622-536-9546x4840",
+        "emailAddress": "griffinkaren@company.org",
+        "password": "22TAhkNO$R",
+        "confirmPassword": "22TAhkNO$R"
+    }
+]

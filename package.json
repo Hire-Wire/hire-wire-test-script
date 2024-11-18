@@ -1,0 +1,21 @@
+{
+  "name": "selenium-test-project",
+  "version": "1.0.0",
+  "main": "index.js",
+"scripts": {
+  "test": "mocha --reporter mochawesome"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chromedriver": "^131.0.0",
+    "selenium-webdriver": "^4.26.0"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2",
+    "mochawesome": "^7.1.3"
+  }
+}
