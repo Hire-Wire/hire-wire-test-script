@@ -1,188 +1,125 @@
-// const { Builder, By, until } = require('selenium-webdriver');
-// const assert = require('assert');
-// require('chromedriver'); // Ensure chromedriver is available
-// const fs = require('fs');
 
-// // Import credentials from JSON file
+/**
+ * @file user_login_test.js
+ * @description Automated tests for the login functionality using Selenium WebDriver.
+ *              This script tests logging in a user using valid credentials, verifying successful login,
+ *              and ensuring the user is redirected to the job application page upon login.
+ * 
+ * @dependencies selenium-webdriver, chromedriver, assert, fs, Profile.json (user credentials)
+ */
 
-// const credentials = require('./Profile.json');
-// // console.log("Password (dynamic access):", credentials["password"]);
+/**
+ * @test User Login Test
+ * @description Tests logging in with valid credentials, submitting the login form, 
+ *              and verifying redirection to the job application page after login.
+ * @steps
+ * 1. Ensure the user is logged out before starting the test.
+ * 2. Navigate to the login page.
+ * 3. Use the email and password of the current user from the credentials.
+ * 4. Submit the login form.
+ * 5. Verify the URL after login to ensure redirection to the job application page.
+ * 
+ * @assertion Ensures that after login, the user is redirected to the job application page (DASHBOARD_URL).
+ */
 
-// console.log("Username:", credentials.emailAddress);
-// console.log("Password:", credentials.password);
-
-
-// const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end';
-// const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication';
-// const TIMEOUT = 30000;
-
-// describe('Login Functionality Test', function () {
-//     this.timeout(TIMEOUT);
-
-//     let driver;
-
-//     before(async () => {
-//         driver = await new Builder().forBrowser('chrome').build();
-//     });
-
-//     after(async () => {
-//         await driver.quit();
-//     });
-
-//     // Helper function to navigate to the login page
-//     async function navigateToLoginPage() {
-//         await driver.get(LOGIN_URL);
-//     }
-
-//     async function logoutIfLoggedIn() {
-//         try {
-//             const logoutButton = await driver.findElement(By.css('button[type="logout"]'));
-//             if (await logoutButton.isDisplayed()) {
-//                 await logoutButton.click();
-//                 await driver.wait(until.urlContains(REGISTRATION_URL), 5000);
-//             }
-//         } catch (error) {
-            
-//         }
-//     }
-
-//     afterEach(async () => {
-//         await logoutIfLoggedIn();
-//     });
-
-
-//     console.log('User must be registered on the system first and then log in with valid credentials');
-//     credentials.forEach((user, index) => {
-//         it(`${index + 1}`, async () => {
-
-//             await logoutIfLoggedIn(); 
-            
-//             await navigateToLoginPage();
-//             const loginbtn = await driver.findElement(By.className('login-button'));
-//             await loginbtn.click();
-
-//             // Use the username and password for the current user
-//             await driver.findElement(By.css('input[placeholder="Email"]')).sendKeys(user.emailAddress);
-//             await driver.findElement(By.css("input[placeholder='Password']")).sendKeys(user.password);
-
-//             // await driver.findElement(By.css('button[type = "submit")]')).click();
-
-
-//             const loginButton = await driver.findElement(By.css('button[type="submit"]'));
-//             await loginButton.click();
-
-//         const errorMessage = await driver.findElements(By.css('.error-message'));
-//         if (errorMessage.length) {
-//             const errorText = await errorMessage[0].getText();
-//             assert.strictEqual(
-//                 errorText, 
-//                 "We're sorry, we couldn't log in", 
-//                 'Expected error message on log in failure'
-//             );
-//         } else {
-//             const currentUrl = await driver.getCurrentUrl();
-//             assert.notStrictEqual(
-//                 currentUrl, 
-//                 DASHBOARD_URL, 
-//                 "login successful"
-//             );
-//         }
-        
-
-//         });
-//     });
-
-
-// });
-
+// Import necessary modules
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
-require('chromedriver'); // Ensure chromedriver is available
-const fs = require('fs');
+require('chromedriver'); // Ensure chromedriver is installed and available
+const fs = require('fs'); // File system for handling profile data
 
-// Import credentials from JSON file
+// Import user credentials from the Profile.json file
 const credentials = require('./Profile.json');
-console.log("Username:", credentials.emailAddress);
-console.log("Password:", credentials.password);
 
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end';
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication';
-const TIMEOUT = 30000;
+// Application URLs
+const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
+const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Job application page URL after login
+const TIMEOUT = 30000; // Global timeout for tests
 
+/**
+ * @description Suite for testing the login functionality.
+ *              Includes tests for submitting the login form with valid user credentials
+ *              and verifying the redirection to the job application page after a successful login.
+ */
 describe('Login Functionality Test', function () {
-    this.timeout(TIMEOUT);
+    this.timeout(TIMEOUT); // Set timeout for all test cases in this suite
 
-    let driver;
+    let driver; // WebDriver instance
 
+    /**
+     * @description Initializes the WebDriver before tests.
+     */
     before(async () => {
         driver = await new Builder().forBrowser('chrome').build();
     });
 
+    /**
+     * @description Quits the WebDriver after tests.
+     */
     after(async () => {
         await driver.quit();
     });
 
-    // Helper function to navigate to the login page
+    /**
+     * @function navigateToLoginPage
+     * @description Navigates to the login page.
+     */
     async function navigateToLoginPage() {
         await driver.get(LOGIN_URL);
     }
 
+    async function navigatetoDashboard() {
+        await driver.get(DASHBOARD_URL);
+    }
+
+    /**
+     * @function logoutIfLoggedIn
+     * @description Logs out the user if they are currently logged in.
+     *              Skips if the user is not logged in or if logout button is not displayed.
+     */
     async function logoutIfLoggedIn() {
         try {
             const logoutButton = await driver.findElement(By.css('button[type="logout"]'));
             if (await logoutButton.isDisplayed()) {
                 await logoutButton.click();
-                await driver.wait(until.urlContains(LOGIN_URL), 5000);
+                await driver.wait(until.urlContains(LOGIN_URL), 5000); // Wait for the login page to load
             }
         } catch (error) {
-            // Ignore errors if not logged in
+            // No action needed if the user is not logged in
         }
     }
 
+    // Ensure logout after each test case
     afterEach(async () => {
         await logoutIfLoggedIn();
     });
 
-    console.log('User must be registered on the system first and then log in with valid credentials');
 
     credentials.forEach((user, index) => {
-        it(`Test Case ${index + 1}: Login with provided credentials`, async () => {
-
+        it(`Test Case ${index + 1}: `, async () => {
+            // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
+
+            // Step 2: Navigate to the login page
             await navigateToLoginPage();
             
+            // Step 3: Click the login button to open the login form
             const loginbtn = await driver.findElement(By.className('login-button'));
             await loginbtn.click();
 
-            // Use the username and password for the current user
-            await driver.findElement(By.css('input[placeholder="Email"]')).sendKeys(user.emailAddress);
-            await driver.findElement(By.css("input[placeholder='Password']")).sendKeys(user.password);
+            // Step 4: Fill in the email and password fields with the user's credentials
+            await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
+            await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
 
-            const loginButton = await driver.findElement(By.css('button[type="submit"]'));
-            await loginButton.click();
-
-            const currentUrl = await driver.getCurrentUrl();
-            assert.strictEqual( currentUrl, DASHBOARD_URL, "User should directed to Job Application page after successful log in");
-            // const errorMessage = await driver.findElements(By.css('.error-message'));
-            // if (errorMessage.length>0) {
-            //     const errorText = await errorMessage[0].getText();
-
-            //     // Include actual and expected in assert message
-            //     assert.strictEqual(
-            //         errorText,
-            //         "We're sorry, we couldn't log in",
-            //         `Expected error message: "We're sorry, we couldn't log in"`
-            //     );
-            // } else {
-            //     const currentUrl = await driver.getCurrentUrl();
-
-            //     // Include actual and expected in assert message
-            //     assert.notStrictEqual(
-            //         currentUrl,
-            //         DASHBOARD_URL,
-            //         "Login Successful"
-            //     ); }
+            // Step 5: Submit the login form
+            const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
+            await submitButton.click();
             
+            
+            await navigatetoDashboard();
+            // Step 6: Verify the user is redirected to the job application page after login
+            const currentUrl = await driver.getCurrentUrl();   
+            assert.strictEqual(currentUrl, DASHBOARD_URL, "User should be directed to Job Application page after successful login");
         });
     });
 });

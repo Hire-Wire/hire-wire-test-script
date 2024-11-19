@@ -1,14 +1,15 @@
 [
     {
-        "firstName": "Nicole",
+        "firstName": "Nicol",
         "lastName": "Sutton",
-        "phoneNumber": "949.449.0684",
+        "phoneNumber": "9490684aaaaaaa",
         "emailAddress": "woodhector@ucalgary.ca",
         "password": "at#$qDpz1y",
         "confirmPassword": "at#$qDpz1y",
+        "status": "Student",
         "workExperience": [
             {
-                "JobTitle": "Psychiatric Nurse",
+                "JobTitle": "",
                 "organizationName": "Community Health Services",
                 "startDate": "002017-02-01",
                 "endDate": "002021-06-30",
@@ -27,12 +28,13 @@
         ]
     },
     {
-        "firstName": "Matthew",
+        "firstName": "Matt",
         "lastName": "Stewart",
-        "phoneNumber": "001-976-452-8281x59879",
+        "phoneNumber": "0098281",
         "emailAddress": "kkent@ucalgary.ca",
         "password": "6GU4#v6qHj",
         "confirmPassword": "6GU4#v6qHj",
+        "status": "Student",
         "workExperience": [
             {
                 "JobTitle": "Software Engineer",
@@ -56,10 +58,11 @@
     {
         "firstName": "David",
         "lastName": "Li",
-        "phoneNumber": "668-635-2035x111",
+        "phoneNumber": "6663035",
         "emailAddress": "toddhorne@example.com",
         "password": "OQMo*@1w2d",
         "confirmPassword": "OQMo*@1w2d",
+        "status": "Employed",
         "workExperience": [
             {
                 "JobTitle": "Data Analyst",
@@ -83,10 +86,11 @@
     {
         "firstName": "Nicholas",
         "lastName": "Snyder",
-        "phoneNumber": "4039500078",
+        "phoneNumber": "4039578",
         "emailAddress": "beckerolivia@business.net",
         "password": "p13twzB$Yu",
         "confirmPassword": "p13twzB$Yu",
+        "status": "Unemployed",
         "workExperience": [
             {
                 "JobTitle": "Marketing Coordinator",
@@ -110,10 +114,11 @@
     {
         "firstName": "Kendra",
         "lastName": "Reynolds",
-        "phoneNumber": "205.537.6128x4498",
+        "phoneNumber": "283432",
         "emailAddress": "susan42@ucalgary.ca",
         "password": "gm!nFhmtb2",
         "confirmPassword": "gm!nFhmtb2",
+        "status": "Unemployed",
         "workExperience": [
             {
                 "JobTitle": "Customer Support Representative",
