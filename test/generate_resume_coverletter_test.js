@@ -35,8 +35,8 @@ require('chromedriver'); // Ensure chromedriver is available for browser automat
 const credentials = require('./ResumeGeneration_data.json');
 
 // Application URLs
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
-const APPLICATION_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Job application page URL after login
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const APPLICATION_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Job application page URL after login
 const TIMEOUT = 30000; // Timeout for the tests
 
 /**
@@ -114,11 +114,13 @@ describe('Generate Resume and Cover Letter Functionality Test', function () {
             const loginbtn = await driver.findElement(By.className('login-button'));
             await loginbtn.click();
 
-            await driver.findElement(By.css('input[placeholder="Email"]')).sendKeys(user.emailAddress);
-            await driver.findElement(By.css('input[placeholder="Password"]')).sendKeys(user.password);
+            await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
+            await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
 
-            const logbtn = await driver.findElement(By.css('button[type="submit"]'));
-            await logbtn.click();
+            // Step 5: Submit the login form
+            const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
+            await submitButton.click();            
+ 
 
             await driver.sleep(1000);
             // Step 3: Verify the user is redirected to the dashboard page after login

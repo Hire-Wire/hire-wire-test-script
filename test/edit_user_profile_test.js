@@ -39,9 +39,9 @@ const fs = require('fs');
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Dashboard URL after login
-const PROFILE_URL = 'http://localhost:3000/hire-wire-front-end/userprofile'; // User profile page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Dashboard URL after login
+const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile'; // User profile page URL
 const TIMEOUT = 30000; // Timeout for the tests
 
 /**

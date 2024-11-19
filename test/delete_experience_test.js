@@ -31,10 +31,10 @@ const fs = require('fs');
 
 const credentials = require('./Profile.json');
 
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end';
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication';
-const PROFILE_URL = 'http://localhost:3000/hire-wire-front-end/userprofile';
-const EXPERIENCE_URL = 'http://localhost:3000/hire-wire-front-end/experience';
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/';
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication';
+const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile';
+const EXPERIENCE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/experience';
 const TIMEOUT = 30000;
 
 describe('Delete Experience from User Profile Functionality Test', function () {
@@ -110,18 +110,20 @@ describe('Delete Experience from User Profile Functionality Test', function () {
         it(`Test case  ${index + 1}`, async () => {
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
+
             await navigateToLoginPage();
 
             // Step 2: Log in using valid credentials from the Profile.json file
-            const loginButton = await driver.findElement(By.xpath('//button[contains(@class, "login-button")]'));
-            await loginButton.click();
+            const loginBtn = await driver.findElement(By.className('login-button'));
+            await loginBtn.click();
 
+            await driver.sleep(100);
             await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
             await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
             await submitButton.click();
 
-            await driver.sleep(1000);
+            await driver.sleep(500);
             // Step 3: Verify that the user is redirected to the dashboard after login
             const currentUrl = await driver.getCurrentUrl();
             assert.strictEqual(currentUrl, DASHBOARD_URL, `User cannot add their job experience because they cannot log in with these credentials.`);
@@ -137,6 +139,7 @@ describe('Delete Experience from User Profile Functionality Test', function () {
                 
                 //  step 6. Verify that the experience is present to delete.
                 await deleteButton.click();
+                await driver.sleep(100);
             } catch (error) {
                 // Handle case where delete button is not found
                 assert.fail('There is no experience to delete');

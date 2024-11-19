@@ -34,9 +34,9 @@ const fs = require('fs');
 // Import user credentials from the Profile.json file
 const credentials = require('./Profile.json');
 
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end/';
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication';
-const PROFILE_URL = 'http://localhost:3000/hire-wire-front-end/userprofile';
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/';
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication';
+const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile';
 const TIMEOUT = 30000;
 
 describe('User Profile Deletion Functionality Test', function () {
@@ -128,8 +128,8 @@ describe('User Profile Deletion Functionality Test', function () {
 
             // Step 2: Log in using valid credentials from the Profile.json file
             await navigateToLoginPage();
-            const loginButton = await driver.findElement(By.xpath('//button[contains(@class, "login-button")]'));
-            await loginButton.click();
+            const loginBtn = await driver.findElement(By.className('login-button'));
+            await loginBtn.click();
 
             await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
             await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);

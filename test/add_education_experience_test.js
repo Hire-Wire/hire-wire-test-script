@@ -35,9 +35,9 @@ const fs = require('fs');
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Dashboard page URL after login
-const EXPERIENCE_URL = 'http://localhost:3000/hire-wire-front-end/experience'; // Education/Experience page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Dashboard page URL after login
+const EXPERIENCE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/experience'; // Education/Experience page URL
 const TIMEOUT = 30000; // Timeout for the tests
 
 /**
@@ -103,17 +103,17 @@ describe('Add Education Experience to Profile Functionality Test', function () {
         await loginBtn.click();
 
         // Enter login credentials
-        await driver.findElement(By.css('input[placeholder="Email"]')).sendKeys(user.emailAddress);
-        await driver.findElement(By.css('input[placeholder="Password"]')).sendKeys(user.password);
-        const submitBtn = await driver.findElement(By.css('button[type="submit"]'));
-        await submitBtn.click();
+        await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
+        await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
+        const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
+        await submitButton.click();            
 
+
+        await driver.sleep(200);
         const currentUrl = await driver.getCurrentUrl();          
         // Assert exact match of current URL with the expected URL
         assert.strictEqual(currentUrl, DASHBOARD_URL, `User cannot add their job experience because they cannot log in with these credentials.`);
 
-        // Wait for the dashboard to load
-        await driver.wait(until.urlContains(DASHBOARD_URL), 5000);
     }
 
     /**
@@ -123,42 +123,51 @@ describe('Add Education Experience to Profile Functionality Test', function () {
      */
     async function fillEducationForm(education) {
         // Add a new education entry
-        await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Education"]')).click();
+        //await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Education"]')).click();
+        await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Experience"]')).click();
 
+        
         if (education.SchoolName) {
             const schoolNameInput = await driver.findElement(By.xpath('//label[text()="Organization Name"]/following-sibling::input'));
-            await schoolNameInput.sendKeys(education.SchoolName);
+            await schoolNameInput.clear(); // Clear the input field
+            await schoolNameInput.sendKeys(education.SchoolName); // Enter the new value
         }
         
         if (education.AreaOfStudy) {
             const areaOfStudyInput = await driver.findElement(By.xpath('//label[text()="Field of Study"]/following-sibling::input'));
+            await areaOfStudyInput.clear();
             await areaOfStudyInput.sendKeys(education.AreaOfStudy);
         }
         
         if (education.startDate) {
             const startDateInput = await driver.findElement(By.xpath('//label[text()="Start Date"]/following-sibling::input[@type="date"]'));
+            await startDateInput.clear();
             await startDateInput.sendKeys(education.startDate); // Send the formatted date (yyyy-mm-dd)
         }
         
         if (education.endDate) {
             const endDateInput = await driver.findElement(By.xpath('//label[text()="End Date"]/following-sibling::input[@type="date"]'));
+            await endDateInput.clear();
             await endDateInput.sendKeys(education.endDate); // Send the formatted date (yyyy-mm-dd)
         }
         
         if (education.degree) {
             const degreeInput = await driver.findElement(By.xpath('//label[text()="Degree"]/following-sibling::input'));
+            await degreeInput.clear();
             await degreeInput.sendKeys(education.degree);
         }
-
+        
         if (education.grade) {
             const gradeInput = await driver.findElement(By.xpath('//label[text()="Grade"]/following-sibling::input'));
+            await gradeInput.clear();
             await gradeInput.sendKeys(education.grade);
         }
-
+        
         // Save the education entry
         const saveBtnEducation = await driver.findElement(By.xpath('//button[contains(@class, "save-button")]'));
         await saveBtnEducation.click();
     }
+    
 
     // Ensure the user is logged out after each test
     afterEach(async () => {

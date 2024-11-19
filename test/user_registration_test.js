@@ -26,8 +26,8 @@ const assert = require('assert');
 require('chromedriver'); // Ensure chromedriver is installed and available
 
 // Application URLs
-const REGISTRATION_URL = 'http://localhost:3000/hire-wire-front-end/registration';
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/userprofile';
+const REGISTRATION_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/registration';
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile';
 const TIMEOUT = 30000; // Global timeout for tests
 const credentials = require('./Profile.json'); // User credentials for testing
 

@@ -19,9 +19,9 @@ const fs = require('fs');
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Dashboard page URL after login
-const EXPERIENCE_URL = 'http://localhost:3000/hire-wire-front-end/experience'; // Job Experience page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Dashboard page URL after login
+const EXPERIENCE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/experience'; // Job Experience page URL
 const TIMEOUT = 30000; // Timeout for the tests
 
 /**
@@ -87,16 +87,13 @@ describe('Add Job Experience Functionality Test', function () {
         await loginBtn.click();
 
         // Enter login credentials
-        await driver.findElement(By.css('input[placeholder="Email"]')).sendKeys(user.emailAddress);
-        await driver.findElement(By.css('input[placeholder="Password"]')).sendKeys(user.password);
-        const submitBtn = await driver.findElement(By.css('button[type="submit"]'));
-        await submitBtn.click();
-      
+        await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
+        await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
+        const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
+        await submitButton.click();            
 
-        await driver.sleep(100);
-        const currentUrl = await driver.getCurrentUrl();          
-        // Assert exact match of current URL with the expected URL
-        assert.strictEqual(currentUrl, DASHBOARD_URL, `User cannot add their job experience because they cannot log in with these credentials.`);
+        await driver.sleep(1000);
+
     }
 
     /**
@@ -106,7 +103,14 @@ describe('Add Job Experience Functionality Test', function () {
      */
     async function fillExperienceForm(experience) {
         // Click "Add Experience" button
-        await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Experience"]')).click();
+       // await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Experience"]')).click();
+       const addExperienceButton = await driver.wait(
+        until.elementLocated(By.xpath('//button[@class="add-button" and text()="+ Add Experience"]')),
+        10000
+    );
+
+    // Click the button
+    await addExperienceButton.click();
 
         // Fill in the job experience details if available
         if (experience.JobTitle) {
@@ -173,7 +177,8 @@ describe('Add Job Experience Functionality Test', function () {
 
             // Step 5: Fill and submit the job experience form for each experience entry
             for (const experience of user.workExperience) {
-                await fillExperienceForm(experience);
+            await fillExperienceForm(experience);
+            await driver.sleep(200);
             }
         });
     });

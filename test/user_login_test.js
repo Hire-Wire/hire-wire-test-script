@@ -32,8 +32,8 @@ const fs = require('fs'); // File system for handling profile data
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
-const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Job application page URL after login
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Job application page URL after login
 const TIMEOUT = 30000; // Global timeout for tests
 
 /**
@@ -113,10 +113,10 @@ describe('Login Functionality Test', function () {
 
             // Step 5: Submit the login form
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
-            await submitButton.click();
+            await submitButton.click();            
             
-            
-            await navigatetoDashboard();
+           // await navigatetoDashboard();
+           await driver.sleep(100);
             // Step 6: Verify the user is redirected to the job application page after login
             const currentUrl = await driver.getCurrentUrl();   
             assert.strictEqual(currentUrl, DASHBOARD_URL, "User should be directed to Job Application page after successful login");
