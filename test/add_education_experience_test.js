@@ -1,12 +1,28 @@
 
+
 /**
- * @file add_job_experience_test.js
- * @description Automated tests for adding job experience to a user's profile in a web application.
- *              The script tests the login process, navigation to the experience page, filling the job experience form,
- *              and submitting the job experience details. After submission, the test verifies that the user can access
- *              and successfully save the job experience details.
+ * @file add_education_experience_test.js
+ * @description Automated tests for adding education experience to a user's profile in a web application.
+ *              The script tests the login process, navigation to the experience page, filling the education form,
+ *              and submitting the education details. After submission, the test verifies that the user can access
+ *              and successfully save the education details.
  * 
  * @dependencies selenium-webdriver, chromedriver, assert, Profile.json (user credentials)
+ */
+
+/**
+ * @description This test case verifies that the user can add education experience to their profile.
+ *              It involves logging in with valid credentials, navigating to the education form,
+ *              filling the education details, and verifying the success of the submission.
+ * 
+ * @steps
+ * 1. Ensure the user is logged out if already logged in.
+ * 2. Log in using valid credentials from the Profile.json file.
+ * 3. Verify that the user is redirected to the dashboard after login.
+ * 4. Navigate to the experience page and fill the education form.
+ * 5. Submit the education form and verify that the education details are saved.
+ * 
+ * @assertion The test asserts that the user is able to successfully add education experience to their profile.
  */
 
 // Import necessary modules
@@ -21,17 +37,17 @@ const credentials = require('./Profile.json');
 // Application URLs
 const LOGIN_URL = 'http://localhost:3000/hire-wire-front-end'; // Login page URL
 const DASHBOARD_URL = 'http://localhost:3000/hire-wire-front-end/jobapplication'; // Dashboard page URL after login
-const EXPERIENCE_URL = 'http://localhost:3000/hire-wire-front-end/experience'; // Job Experience page URL
+const EXPERIENCE_URL = 'http://localhost:3000/hire-wire-front-end/experience'; // Education/Experience page URL
 const TIMEOUT = 30000; // Timeout for the tests
 
 /**
- * @description Suite for testing the functionality of adding job experience to a user's profile.
+ * @description Suite for testing the functionality of adding education experience to a user's profile.
  *              The test covers login, navigation to the experience page, form submission, 
- *              and verification that the job experience details are successfully saved.
+ *              and verification that the education details are successfully saved.
  */
-describe('Add Job Experience Functionality Test', function () {
+describe('Add Education Experience to Profile Functionality Test', function () {
     this.timeout(TIMEOUT); // Set global timeout for all tests in this suite
-    
+
     let driver; // WebDriver instance
 
     /**
@@ -91,50 +107,57 @@ describe('Add Job Experience Functionality Test', function () {
         await driver.findElement(By.css('input[placeholder="Password"]')).sendKeys(user.password);
         const submitBtn = await driver.findElement(By.css('button[type="submit"]'));
         await submitBtn.click();
-      
 
-        await driver.sleep(100);
         const currentUrl = await driver.getCurrentUrl();          
         // Assert exact match of current URL with the expected URL
         assert.strictEqual(currentUrl, DASHBOARD_URL, `User cannot add their job experience because they cannot log in with these credentials.`);
+
+        // Wait for the dashboard to load
+        await driver.wait(until.urlContains(DASHBOARD_URL), 5000);
     }
 
     /**
-     * @function fillExperienceForm
-     * @description Fills the job experience form with provided data.
-     * @param {Object} experience - The job experience data to be entered in the form.
+     * @function fillEducationForm
+     * @description Fills the education form with provided data.
+     * @param {Object} education - The education data to be entered in the form.
      */
-    async function fillExperienceForm(experience) {
-        // Click "Add Experience" button
-        await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Experience"]')).click();
+    async function fillEducationForm(education) {
+        // Add a new education entry
+        await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Education"]')).click();
 
-        // Fill in the job experience details if available
-        if (experience.JobTitle) {
-            const jobTitleInput = await driver.findElement(By.xpath('//label[text()="Job Title"]/following-sibling::input'));
-            await jobTitleInput.sendKeys(experience.JobTitle);
+        if (education.SchoolName) {
+            const schoolNameInput = await driver.findElement(By.xpath('//label[text()="Organization Name"]/following-sibling::input'));
+            await schoolNameInput.sendKeys(education.SchoolName);
         }
-        if (experience.organizationName) {
-            const orgNameInput = await driver.findElement(By.xpath('//label[text()="Organization Name"]/following-sibling::input'));
-            await orgNameInput.sendKeys(experience.organizationName);
+        
+        if (education.AreaOfStudy) {
+            const areaOfStudyInput = await driver.findElement(By.xpath('//label[text()="Field of Study"]/following-sibling::input'));
+            await areaOfStudyInput.sendKeys(education.AreaOfStudy);
         }
-        if (experience.startDate) {
+        
+        if (education.startDate) {
             const startDateInput = await driver.findElement(By.xpath('//label[text()="Start Date"]/following-sibling::input[@type="date"]'));
-            await startDateInput.sendKeys(experience.startDate); // Send the formatted date (yyyy-mm-dd)
+            await startDateInput.sendKeys(education.startDate); // Send the formatted date (yyyy-mm-dd)
         }
         
-        if (experience.endDate) {
+        if (education.endDate) {
             const endDateInput = await driver.findElement(By.xpath('//label[text()="End Date"]/following-sibling::input[@type="date"]'));
-            await endDateInput.sendKeys(experience.endDate); // Send the formatted date (yyyy-mm-dd)
+            await endDateInput.sendKeys(education.endDate); // Send the formatted date (yyyy-mm-dd)
         }
         
-        if (experience.description) {
-            const descriptionInput = await driver.findElement(By.xpath('//label[text()="Description"]/following-sibling::textarea'));
-            await descriptionInput.sendKeys(experience.description);
+        if (education.degree) {
+            const degreeInput = await driver.findElement(By.xpath('//label[text()="Degree"]/following-sibling::input'));
+            await degreeInput.sendKeys(education.degree);
         }
 
-        // Save the experience entry
-        const saveBtn = await driver.findElement(By.css('button.save-button'));
-        await saveBtn.click();
+        if (education.grade) {
+            const gradeInput = await driver.findElement(By.xpath('//label[text()="Grade"]/following-sibling::input'));
+            await gradeInput.sendKeys(education.grade);
+        }
+
+        // Save the education entry
+        const saveBtnEducation = await driver.findElement(By.xpath('//button[contains(@class, "save-button")]'));
+        await saveBtnEducation.click();
     }
 
     // Ensure the user is logged out after each test
@@ -142,22 +165,9 @@ describe('Add Job Experience Functionality Test', function () {
         await logoutIfLoggedIn();
     });
 
-    /**
-     * @description This test case verifies that the user can add job experience to their profile.
-     *              It involves logging in with valid credentials, navigating to the experience form,
-     *              filling the job experience details, and verifying the success of the submission.
-     * 
-     * @steps
-     * 1. Ensure the user is logged out if already logged in.
-     * 2. Log in using valid credentials from the Profile.json file.
-     * 3. Verify that the user is redirected to the dashboard after login.
-     * 4. Navigate to the experience page and fill the job experience form.
-     * 5. Submit the job experience form and verify that the job experience details are saved.
-     * 
-     * @assertion The test asserts that the user is able to successfully add job experience to their profile.
-     */
+
     credentials.forEach((user, index) => {
-        it(`Test case ${index + 1}`, async () => {
+        it(`User ${index + 1}`, async () => {
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
 
@@ -171,9 +181,9 @@ describe('Add Job Experience Functionality Test', function () {
             // Step 4: Navigate to the Experience page
             await navigateToPage(EXPERIENCE_URL);
 
-            // Step 5: Fill and submit the job experience form for each experience entry
-            for (const experience of user.workExperience) {
-                await fillExperienceForm(experience);
+            // Step 5: Fill and submit the education form for each education entry
+            for (const education of user.Education) {
+                await fillEducationForm(education);
             }
         });
     });
