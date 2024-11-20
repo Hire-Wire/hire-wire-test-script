@@ -2,25 +2,25 @@
     {
         "firstName": "Nicol",
         "lastName": "Sutton",
-        "phoneNumber": "9490684aaaaaaa",
+        "phoneNumber": "9490684785",
         "emailAddress": "woodhector@ucalgary.ca",
         "password": "at#$qDpz1y",
         "confirmPassword": "at#$qDpz1y",
         "status": "Student",
         "workExperience": [
             {
-                "JobTitle": "",
+                "JobTitle": "Mental Health Advisor",
                 "organizationName": "Community Health Services",
-                "startDate": "002017-02-01",
-                "endDate": "002021-06-30",
+                "startDate": "2017-02-01",
+                "endDate": "2021-06-30",
                 "description": "Provided mental health support to patients in various settings, including hospitals and outpatient clinics."
             }
         ],
         "Education": [
             {
                 "SchoolName": "Salazar, Mitchell and Robertson University",
-                "startDate": "002011-10-01",
-                "endDate": "002016-09-27",
+                "startDate": "2011-10-01",
+                "endDate": "2016-09-27",
                 "AreaOfStudy": "Psychology",
                 "degree": "Bachelor of Science in Psychology",
                 "grade": 3.7
@@ -30,8 +30,8 @@
     {
         "firstName": "Matt",
         "lastName": "Stewart",
-        "phoneNumber": "0098281",
-        "emailAddress": "kkent@ucalgary.ca",
+        "phoneNumber": "4039828231",
+        "emailAddress": "mattstewart@ucalgary.ca",
         "password": "6GU4#v6qHj",
         "confirmPassword": "6GU4#v6qHj",
         "status": "Student",
@@ -39,16 +39,24 @@
             {
                 "JobTitle": "Software Engineer",
                 "organizationName": "Tech Innovations Ltd.",
-                "startDate": "002018-03-15",
-                "endDate": "002023-05-28",
+                "startDate": "2018-03-15",
+                "endDate": "2023-05-28",
                 "description": "Developed and maintained software applications for clients in various industries, specializing in mobile app development."
+            },
+
+            {
+                "JobTitle": "Testing Engineer",
+                "organizationName": "Tech  Ltd.",
+                "startDate": "2023-03-15",
+                "endDate": "2024-05-28",
+                "description": "Tested and maintained software applications for clients, specializing in web app development."
             }
         ],
         "Education": [
             {
                 "SchoolName": "Springfield Technical University",
-                "startDate": "002012-09-01",
-                "endDate": "002016-06-15",
+                "startDate": "2012-09-01",
+                "endDate": "2016-06-15",
                 "AreaOfStudy": "Computer Science",
                 "degree": "Bachelor of Science in Computer Science",
                 "grade": 3.9
@@ -58,8 +66,8 @@
     {
         "firstName": "David",
         "lastName": "Li",
-        "phoneNumber": "6663035",
-        "emailAddress": "toddhorne@example.com",
+        "phoneNumber": "9026663035",
+        "emailAddress": "davidli@example.com",
         "password": "OQMo*@1w2d",
         "confirmPassword": "OQMo*@1w2d",
         "status": "Employed",
@@ -67,16 +75,16 @@
             {
                 "JobTitle": "Data Analyst",
                 "organizationName": "Global Analytics Corp.",
-                "startDate": "002019-04-11",
-                "endDate": "002022-10-18",
+                "startDate": "2019-04-11",
+                "endDate": "2022-10-18",
                 "description": "Analyzed large datasets and generated reports to support decision-making for clients in the finance sector."
             }
         ],
         "Education": [
             {
                 "SchoolName": "Riverside State College",
-                "startDate": "002014-08-20",
-                "endDate": "002018-05-10",
+                "startDate": "2014-08-20",
+                "endDate": "2018-05-10",
                 "AreaOfStudy": "Mathematics",
                 "degree": "Bachelor of Science in Mathematics",
                 "grade": 3.2
@@ -86,8 +94,8 @@
     {
         "firstName": "Nicholas",
         "lastName": "Snyder",
-        "phoneNumber": "4039578",
-        "emailAddress": "beckerolivia@business.net",
+        "phoneNumber": "6474039578",
+        "emailAddress": "nicholas.snyder@business.net",
         "password": "p13twzB$Yu",
         "confirmPassword": "p13twzB$Yu",
         "status": "Unemployed",
@@ -95,16 +103,23 @@
             {
                 "JobTitle": "Marketing Coordinator",
                 "organizationName": "Sunrise Marketing Group",
-                "startDate": "002016-07-01",
-                "endDate": "002021-08-15",
+                "startDate": "2016-07-01",
+                "endDate": "2021-08-15",
+                "description": "Coordinated marketing campaigns and assisted with content creation for social media and advertisements."
+            },
+            {
+                "JobTitle": "Marketing Coordinator",
+                "organizationName": "Sunrise Marketing Group",
+                "startDate": "2016-07-01",
+                "endDate": "2021-08-15",
                 "description": "Coordinated marketing campaigns and assisted with content creation for social media and advertisements."
             }
         ],
         "Education": [
             {
                 "SchoolName": "Lakeside University",
-                "startDate": "002012-09-01",
-                "endDate": "002016-05-25",
+                "startDate": "2012-09-01",
+                "endDate": "2016-05-25",
                 "AreaOfStudy": "Business Administration",
                 "degree": "Bachelor of Business Administration",
                 "grade": 3.6
@@ -114,8 +129,8 @@
     {
         "firstName": "Kendra",
         "lastName": "Reynolds",
-        "phoneNumber": "283432",
-        "emailAddress": "susan42@ucalgary.ca",
+        "phoneNumber": "4039832432",
+        "emailAddress": "kendra.reynolds@ucalgary.ca",
         "password": "gm!nFhmtb2",
         "confirmPassword": "gm!nFhmtb2",
         "status": "Unemployed",
@@ -123,21 +138,85 @@
             {
                 "JobTitle": "Customer Support Representative",
                 "organizationName": "Quick Solutions Inc.",
-                "startDate": "002017-11-10",
-                "endDate": "002022-07-30",
+                "startDate": "2017-11-10",
+                "endDate": "2022-07-30",
                 "description": "Provided customer support for technical issues, handled inquiries, and ensured customer satisfaction."
             }
         ],
         "Education": [
             {
                 "SchoolName": "Northfield College",
-                "startDate": "002014-01-01",
-                "endDate": "002018-12-31",
+                "startDate": "2014-01-01",
+                "endDate": "2018-12-31",
                 "AreaOfStudy": "Communications",
                 "degree": "Bachelor of Arts in Communications",
                 "grade": 2.9
             }
         ]
+    },
+    {
+        "firstName": "Amelia",
+        "lastName": "Carter",
+        "phoneNumber": "5874500001",
+        "emailAddress": "amelia.carter@example.com",
+        "password": "Hv2&bE4@wt",
+        "confirmPassword": "Hv2&bE4@wt",
+        "status": "Student",
+        "workExperience": [
+            {
+                "JobTitle": "Intern",
+                "organizationName": "Green Tech Solutions",
+                "startDate": "2022-05-01",
+                "endDate": "2023-08-30",
+                "description": "Supported sustainability projects and conducted data analysis."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "EcoTech University",
+                "startDate": "2019-09-01",
+                "endDate": "2023-06-15",
+                "AreaOfStudy": "Environmental Science",
+                "degree": "Bachelor of Science",
+                "grade": 3.8
+            },
+
+            {
+                "SchoolName": "Alberta University",
+                "startDate": "2020-09-01",
+                "endDate": "2024-06-15",
+                "AreaOfStudy": " Science",
+                "degree": "Masters of Science",
+                "grade": 3.8
+            }
+        ]
+    },
+    {
+        "firstName": "Liam",
+        "lastName": "Brown",
+        "phoneNumber": "7781234567",
+        "emailAddress": "liam.brown@techmail.com",
+        "password": "RT$1vP8jvY",
+        "confirmPassword": "RT$1vP8jvY",
+        "status": "Employed",
+        "workExperience": [
+            {
+                "JobTitle": "Project Manager",
+                "organizationName": "Innovative Systems Ltd.",
+                "startDate": "2015-04-01",
+                "endDate": "2023-03-31",
+                "description": "Led cross-functional teams to deliver high-value projects on time."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Westfield Polytechnic",
+                "startDate": "2010-09-01",
+                "endDate": "2014-06-30",
+                "AreaOfStudy": "Engineering",
+                "degree": "Bachelor of Engineering",
+                "grade": 3.5
+            }
+        ]
     }
 ]
-   

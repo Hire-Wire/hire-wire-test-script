@@ -1,0 +1,339 @@
+[
+    {
+        "firstName": "123Nicol",
+        "lastName": "Sutton",
+        "phoneNumber": "9490684aaaaaaa",
+        "emailAddress": "woodhector@ucalgary",
+        "password": "at#$qDpz1y",
+        "confirmPassword": "at#$qDpz1y",
+        "status": "Student",
+        "workExperience": [
+            {
+                "JobTitle": "",
+                "organizationName": "Community Health Services",
+                "startDate": "2017-02-01",
+                "endDate": "2021-06-30",
+                "description": "Provided mental health support."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Salazar, Mitchell and Robertson University",
+                "startDate": "2011-10-01",
+                "endDate": "2016-09-27",
+                "AreaOfStudy": "Psychology",
+                "degree": "Bachelor of Science in Psychology",
+                "grade": "A+"
+            }
+        ]
+    },
+    {
+        "firstName": "",
+        "lastName": "Stewart",
+        "phoneNumber": "0098281",
+        "emailAddress": "kkent@ucalgary",
+        "password": "6GU4#v6qHj",
+        "confirmPassword": "6GU4#v6qHj",
+        "status": "Student",
+        "workExperience": [
+            {
+                "JobTitle": "Software Engineer",
+                "organizationName": "Tech Innovations Ltd.",
+                "startDate": "2018-03-15",
+                "endDate": "2023-05-28",
+                "description": "Mobile app development."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Springfield Technical University",
+                "startDate": "2012-09-01",
+                "endDate": "2016-06-15",
+                "AreaOfStudy": "Computer Science",
+                "degree": "Bachelor of Science in Computer Science",
+                "grade": "B"
+            }
+        ]
+    },
+    {
+        "firstName": "David",
+        "lastName": "Li",
+        "phoneNumber": "6663035",
+        "emailAddress": "toddhorne@example",
+        "password": "OQMo*@1w2d",
+        "confirmPassword": "OQMo*@1w2d",
+        "status": "Employed",
+        "workExperience": [
+            {
+                "JobTitle": "Data Analyst",
+                "organizationName": "Global Analytics Corp.",
+                "startDate": "2019-04-11",
+                "endDate": "2022-10-18",
+                "description": "Analyzed datasets."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Riverside State College",
+                "startDate": "2014-08-20",
+                "endDate": "2018-05-10",
+                "AreaOfStudy": "Mathematics",
+                "degree": "Bachelor of Science in Mathematics",
+                "grade": "C-"
+            }
+        ]
+    },
+    {
+        "firstName": "Nicholas",
+        "lastName": "Snyder",
+        "phoneNumber": "4039578",
+        "emailAddress": "beckerolivia@business",
+        "password": "p13twzB$Yu",
+        "confirmPassword": "p13twzB$Yu",
+        "status": "Unemployed",
+        "workExperience": [
+            {
+                "JobTitle": "Marketing Coordinator",
+                "organizationName": "Sunrise Marketing Group",
+                "startDate": "2016-07-01",
+                "endDate": "2021-08-15",
+                "description": "Coordinated marketing campaigns."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Lakeside University",
+                "startDate": "2012-09-01",
+                "endDate": "2016-05-25",
+                "AreaOfStudy": "Business Administration",
+                "degree": "Bachelor of Business Administration",
+                "grade": "D+"
+            }
+        ]
+    },
+    {
+        "firstName": "Kendra",
+        "lastName": "Reynolds",
+        "phoneNumber": "283432",
+        "emailAddress": "susan42@ucalgary",
+        "password": "gm!nFhmtb2",
+        "confirmPassword": "gm!nFhmtb2",
+        "status": "Unemployed",
+        "workExperience": [
+            {
+                "JobTitle": "Customer Support Representative",
+                "organizationName": "Quick Solutions Inc.",
+                "startDate": "2017-11-10",
+                "endDate": "2022-07-30",
+                "description": "Provided customer support."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Northfield College",
+                "startDate": "2014-01-01",
+                "endDate": "2018-12-31",
+                "AreaOfStudy": "Communications",
+                "degree": "Bachelor of Arts in Communications",
+                "grade": "F"
+            }
+        ]
+    },
+    {
+        "firstName": "1Alex",
+        "lastName": "Johnson",
+        "phoneNumber": "3232323",
+        "emailAddress": "alexj123@calgary",
+        "password": "Password@123",
+        "confirmPassword": "Password@123",
+        "status": "Student",
+        "workExperience": [
+            {
+                "JobTitle": "Intern",
+                "organizationName": "Tech Solutions",
+                "startDate": "2019-06-01",
+                "endDate": "2019-12-01",
+                "description": "Worked on development."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Tech University",
+                "startDate": "2018-09-01",
+                "endDate": "2022-04-30",
+                "AreaOfStudy": "Software Engineering",
+                "degree": "Bachelor of Software Engineering",
+                "grade": "X"
+            }
+        ]
+    },
+    {
+        "firstName": "J#ane",
+        "lastName": "Doe",
+        "phoneNumber": "908112233",
+        "emailAddress": "janedoe@domaincom",
+        "password": "Passw@ord1",
+        "confirmPassword": "Passw@ord1",
+        "status": "Employed",
+        "workExperience": [
+            {
+                "JobTitle": "Software Developer",
+                "organizationName": "Code Labs",
+                "startDate": "2015-01-10",
+                "endDate": "2021-02-28",
+                "description": "Developed software."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Code Academy",
+                "startDate": "2012-01-01",
+                "endDate": "2016-01-01",
+                "AreaOfStudy": "Computer Programming",
+                "degree": "Bachelor of Programming",
+                "grade": "Z"
+            }
+        ]
+    },
+    {
+        "firstName": "Xenia",
+        "lastName": "Harris",
+        "phoneNumber": "1122334455",
+        "emailAddress": "xenia@abc",
+        "password": "Xenia@123",
+        "confirmPassword": "Xenia@123",
+        "status": "Unemployed",
+        "workExperience": [
+            {
+                "JobTitle": "HR Coordinator",
+                "organizationName": "XYZ Corp.",
+                "startDate": "2020-05-01",
+                "endDate": "2022-05-01",
+                "description": "HR coordination."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Global Business University",
+                "startDate": "2015-05-01",
+                "endDate": "2019-05-01",
+                "AreaOfStudy": "Business Management",
+                "degree": "Master of Business Administration",
+                "grade": "M"
+            }
+        ]
+    },
+    {
+        "firstName": "Toby",
+        "lastName": "Wright",
+        "phoneNumber": "1122abc",
+        "emailAddress": "toby@wrongformatcom",
+        "password": "Toby@1234",
+        "confirmPassword": "Toby@1234",
+        "status": "Employed",
+        "workExperience": [
+            {
+                "JobTitle": "Analyst",
+                "organizationName": "Analyst Ltd.",
+                "startDate": "2015-01-01",
+                "endDate": "2019-01-01",
+                "description": "Data analysis."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "National University",
+                "startDate": "2010-01-01",
+                "endDate": "2014-01-01",
+                "AreaOfStudy": "Data Science",
+                "degree": "Bachelor of Data Science",
+                "grade": "F"
+            }
+        ]
+    },
+    {
+        "firstName": "123John",
+        "lastName": "Smith",
+        "phoneNumber": "98765432",
+        "emailAddress": "john.smith@wrongcom",
+        "password": "StrongPass@123",
+        "confirmPassword": "StrongPass@123",
+        "status": "Student",
+        "workExperience": [
+            {
+                "JobTitle": "Tutor",
+                "organizationName": "School XYZ",
+                "startDate": "2018-03-01",
+                "endDate": "2020-03-01",
+                "description": "Tutored students."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Famous College",
+                "startDate": "2015-08-01",
+                "endDate": "2019-08-01",
+                "AreaOfStudy": "Education",
+                "degree": "Bachelor of Education",
+                "grade": "X"
+            }
+        ]
+    },
+    {
+        "firstName": "Anna",
+        "lastName": "Watson",
+        "phoneNumber": "8822334455",
+        "emailAddress": "anna@domain.co",
+        "password": "Anna@12345",
+        "confirmPassword": "Anna@12345",
+        "status": "Employed",
+        "workExperience": [
+            {
+                "JobTitle": "HR Manager",
+                "organizationName": "Global Corp.",
+                "startDate": "2017-06-01",
+                "endDate": "2023-06-01",
+                "description": "Managed HR department."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "University of Excellence",
+                "startDate": "2011-01-01",
+                "endDate": "2015-01-01",
+                "AreaOfStudy": "HR Management",
+                "degree": "Bachelor of HR Management",
+                "grade": "X"
+            }
+        ]
+    },
+    {
+        "firstName": "Oliver",
+        "lastName": "Green",
+        "phoneNumber": "8877665544",
+        "emailAddress": "olivergreen@abc.com",
+        "password": "Password1",
+        "confirmPassword": "Password1",
+        "status": "Unemployed",
+        "workExperience": [
+            {
+                "JobTitle": "Product Manager",
+                "organizationName": "Tech Innovators",
+                "startDate": "2016-04-01",
+                "endDate": "2020-04-01",
+                "description": "Managed product development."
+            }
+        ],
+        "Education": [
+            {
+                "SchoolName": "Innovative University",
+                "startDate": "2011-05-01",
+                "endDate": "2015-05-01",
+                "AreaOfStudy": "Product Management",
+                "degree": "Bachelor of Product Management",
+                "grade": "A"
+            }
+        ]
+    }
+]
+
