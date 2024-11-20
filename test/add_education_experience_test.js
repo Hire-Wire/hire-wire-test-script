@@ -146,6 +146,7 @@ describe('Add Education Experience to Profile Functionality Test', function () {
             );
             await driver.wait(until.elementIsVisible(passwordInput), 5000);
             await passwordInput.sendKeys(user.password);
+            
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
             await submitButton.click();            
             

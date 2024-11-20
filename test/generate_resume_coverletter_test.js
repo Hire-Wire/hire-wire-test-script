@@ -163,7 +163,7 @@ describe('Generate Resume and Cover Letter Functionality Test', function () {
             const generatedText = await generatedContent.getText();
             const len = generatedText.length;
             if(generatedText.length == 0){
-            assert.notStrictEqual(generatedText, len, "Failed to generate content"
+            assert.StrictEqual(generatedText, len, "Failed to generate content"
             );
         }
         });

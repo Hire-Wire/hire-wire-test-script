@@ -131,12 +131,25 @@ describe('User Profile Deletion Functionality Test', function () {
             await logoutIfLoggedIn();
 
             // Step 2: Log in using valid credentials from the Profile.json file
-            await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
-            await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
+            await navigateToLoginPage();
+            const emailInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Email"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(emailInput), 5000);
+            await emailInput.sendKeys(user.emailAddress);
+        
+            // Wait for the password field to appear and send password
+            const passwordInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Password"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(passwordInput), 5000);
+            await passwordInput.sendKeys(user.password);
+
+            // Step 5: Submit the login form
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
-            await submitButton.click();
-
-
+            await submitButton.click();   
             // Step 3: Verify that the user is redirected to the dashboard after login
             await driver.sleep(1000);
             const currentUrl = await driver.getCurrentUrl();
