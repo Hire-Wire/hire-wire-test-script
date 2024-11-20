@@ -35,7 +35,7 @@ const fs = require('fs');
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login'; // Login page URL
 const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Dashboard page URL after login
 const EXPERIENCE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/experience'; // Education/Experience page URL
 const TIMEOUT = 30000; // Timeout for the tests
@@ -82,13 +82,17 @@ describe('Add Education Experience to Profile Functionality Test', function () {
      */
     async function logoutIfLoggedIn() {
         try {
-            const logoutButton = await driver.findElement(By.css('button[type="logout"]'));
+            // Locate the logout button using XPath
+            const logoutButton = await driver.findElement(By.xpath('//button[@type="logout"]'));
+            
+            // Check if the button is displayed and clickable
             if (await logoutButton.isDisplayed()) {
                 await logoutButton.click();
-                await driver.wait(until.urlContains(LOGIN_URL), 5000); // Wait for the login page to load
+                // Wait until the URL changes back to the login page
+                await driver.wait(until.urlContains(LOGIN_URL), 5000);
             }
         } catch (error) {
-            // Ignored if logout button is not found
+            // No action needed if the logout button is not found or not displayed
         }
     }
 
@@ -97,24 +101,7 @@ describe('Add Education Experience to Profile Functionality Test', function () {
      * @description Logs the user in using credentials from the Profile.json file.
      * @param {Object} user - The user object containing email and password.
      */
-    async function login(user) {
-        await navigateToPage(LOGIN_URL);
-        const loginBtn = await driver.findElement(By.className('login-button'));
-        await loginBtn.click();
 
-        // Enter login credentials
-        await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
-        await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
-        const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
-        await submitButton.click();            
-
-
-        await driver.sleep(200);
-        const currentUrl = await driver.getCurrentUrl();          
-        // Assert exact match of current URL with the expected URL
-        assert.strictEqual(currentUrl, DASHBOARD_URL, `User cannot add their job experience because they cannot log in with these credentials.`);
-
-    }
 
     /**
      * @function fillEducationForm
@@ -124,48 +111,7 @@ describe('Add Education Experience to Profile Functionality Test', function () {
     async function fillEducationForm(education) {
         // Add a new education entry
         //await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Education"]')).click();
-        await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Experience"]')).click();
-
-        
-        if (education.SchoolName) {
-            const schoolNameInput = await driver.findElement(By.xpath('//label[text()="Organization Name"]/following-sibling::input'));
-            await schoolNameInput.clear(); // Clear the input field
-            await schoolNameInput.sendKeys(education.SchoolName); // Enter the new value
-        }
-        
-        if (education.AreaOfStudy) {
-            const areaOfStudyInput = await driver.findElement(By.xpath('//label[text()="Field of Study"]/following-sibling::input'));
-            await areaOfStudyInput.clear();
-            await areaOfStudyInput.sendKeys(education.AreaOfStudy);
-        }
-        
-        if (education.startDate) {
-            const startDateInput = await driver.findElement(By.xpath('//label[text()="Start Date"]/following-sibling::input[@type="date"]'));
-            await startDateInput.clear();
-            await startDateInput.sendKeys(education.startDate); // Send the formatted date (yyyy-mm-dd)
-        }
-        
-        if (education.endDate) {
-            const endDateInput = await driver.findElement(By.xpath('//label[text()="End Date"]/following-sibling::input[@type="date"]'));
-            await endDateInput.clear();
-            await endDateInput.sendKeys(education.endDate); // Send the formatted date (yyyy-mm-dd)
-        }
-        
-        if (education.degree) {
-            const degreeInput = await driver.findElement(By.xpath('//label[text()="Degree"]/following-sibling::input'));
-            await degreeInput.clear();
-            await degreeInput.sendKeys(education.degree);
-        }
-        
-        if (education.grade) {
-            const gradeInput = await driver.findElement(By.xpath('//label[text()="Grade"]/following-sibling::input'));
-            await gradeInput.clear();
-            await gradeInput.sendKeys(education.grade);
-        }
-        
-        // Save the education entry
-        const saveBtnEducation = await driver.findElement(By.xpath('//button[contains(@class, "save-button")]'));
-        await saveBtnEducation.click();
+       
     }
     
 
@@ -177,22 +123,87 @@ describe('Add Education Experience to Profile Functionality Test', function () {
 
     credentials.forEach((user, index) => {
         it(`User ${index + 1}`, async () => {
+           
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
 
+
             // Step 2: Log in using valid credentials from the Profile.json file
-            await login(user);
+            await navigateToPage(LOGIN_URL);
+           
+            // Enter login credentials
+            const emailInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Email"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(emailInput), 5000);
+            await emailInput.sendKeys(user.emailAddress);
+        
+            // Wait for the password field to appear and send password
+            const passwordInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Password"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(passwordInput), 5000);
+            await passwordInput.sendKeys(user.password);
+            const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
+            await submitButton.click();            
+            
+           await driver.sleep(1000);
 
-            // Step 3: Verify that the user is redirected to the dashboard page after login
-            const currentUrl = await driver.getCurrentUrl();
-            assert.strictEqual(currentUrl.includes(DASHBOARD_URL), true, `User ${index + 1} should be on the dashboard page`);
+            const currentUrl = await driver.getCurrentUrl();   
+            assert.strictEqual(currentUrl, DASHBOARD_URL, "User should be directed to Job Application page after successful login");
 
-            // Step 4: Navigate to the Experience page
+            // Step 3: Verify the user is redirected to the job application page after login
             await navigateToPage(EXPERIENCE_URL);
 
-            // Step 5: Fill and submit the education form for each education entry
-            for (const education of user.Education) {
-                await fillEducationForm(education);
+            for ( education of user.Education) {
+
+                // Step 4: Fill and submit the education form for each education entry
+                await driver.sleep(1000);
+                await driver.findElement(By.xpath('//button[contains(@class, "add-button") and text()="+ Add Education"]')).click();
+
+                if (education.SchoolName) {
+                    const schoolNameInput = await driver.findElement(By.xpath('//label[text()="Organization Name"]/following-sibling::input'));
+                    await schoolNameInput.clear(); // Clear the input field
+                    await schoolNameInput.sendKeys(education.SchoolName); // Enter the new value
+                }
+                
+                if (education.AreaOfStudy) {
+                    const areaOfStudyInput = await driver.findElement(By.xpath('//label[text()="Field of Study"]/following-sibling::input'));
+                    await areaOfStudyInput.clear();
+                    await areaOfStudyInput.sendKeys(education.AreaOfStudy);
+                }
+                
+                if (education.startDate) {
+                    const startDateInput = await driver.findElement(By.xpath('//label[text()="Start Date"]/following-sibling::input[@type="date"]'));
+                    await startDateInput.clear();
+                    await startDateInput.sendKeys(education.startDate); // Send the formatted date (yyyy-mm-dd)
+                }
+                
+                if (education.endDate) {
+                    const endDateInput = await driver.findElement(By.xpath('//label[text()="End Date"]/following-sibling::input[@type="date"]'));
+                    await endDateInput.clear();
+                    await endDateInput.sendKeys(education.endDate); // Send the formatted date (yyyy-mm-dd)
+                }
+                
+                if (education.degree) {
+                    const degreeInput = await driver.findElement(By.xpath('//label[text()="Degree"]/following-sibling::input'));
+                    await degreeInput.clear();
+                    await degreeInput.sendKeys(education.degree);
+                }
+                
+                if (education.grade) {
+                    const gradeInput = await driver.findElement(By.xpath('//label[text()="Grade"]/following-sibling::input'));
+                    await gradeInput.clear();
+                    await gradeInput.sendKeys(education.grade);
+                }
+                
+                //step 6: make sure the education field are saved.
+                const saveBtnEducation = await driver.findElement(By.xpath('//button[contains(@class, "save-button")]'));
+                await saveBtnEducation.click();
+
+
             }
         });
     });

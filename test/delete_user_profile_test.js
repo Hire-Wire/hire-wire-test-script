@@ -34,7 +34,7 @@ const fs = require('fs');
 // Import user credentials from the Profile.json file
 const credentials = require('./Profile.json');
 
-const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/';
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login';
 const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication';
 const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile';
 const TIMEOUT = 30000;
@@ -105,13 +105,17 @@ describe('User Profile Deletion Functionality Test', function () {
      */
     async function logoutIfLoggedIn() {
         try {
+            // Locate the logout button using XPath
             const logoutButton = await driver.findElement(By.xpath('//button[@type="logout"]'));
+            
+            // Check if the button is displayed and clickable
             if (await logoutButton.isDisplayed()) {
                 await logoutButton.click();
-                await driver.wait(until.urlContains(LOGIN_URL), 5000); // Wait for the login page to load
+                // Wait until the URL changes back to the login page
+                await driver.wait(until.urlContains(LOGIN_URL), 5000);
             }
         } catch (error) {
-            // Ignored if logout button is not found
+            // No action needed if the logout button is not found or not displayed
         }
     }
 
@@ -127,10 +131,6 @@ describe('User Profile Deletion Functionality Test', function () {
             await logoutIfLoggedIn();
 
             // Step 2: Log in using valid credentials from the Profile.json file
-            await navigateToLoginPage();
-            const loginBtn = await driver.findElement(By.className('login-button'));
-            await loginBtn.click();
-
             await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
             await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
@@ -146,9 +146,6 @@ describe('User Profile Deletion Functionality Test', function () {
             await navigateToProfilePage();
 
             // Step 5: Click the delete button to delete the user profile
-            // const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, "delete-user-profile-button") and @type="button"]'));
-            // await deleteButton.click();
-
             const deleteButton = await driver.wait(until.elementLocated(By.xpath('//button[contains(@class, "delete-user-profile-button") and @type="button"]')), TIMEOUT);
             await deleteButton.click();
             

@@ -39,7 +39,7 @@ const fs = require('fs');
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login'; // Login page URL
 const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Dashboard URL after login
 const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile'; // User profile page URL
 const TIMEOUT = 30000; // Timeout for the tests
@@ -109,17 +109,19 @@ describe('User Profile Functionality Test', function () {
      */
     async function logoutIfLoggedIn() {
         try {
+            // Locate the logout button using XPath
             const logoutButton = await driver.findElement(By.xpath('//button[@type="logout"]'));
+            
+            // Check if the button is displayed and clickable
             if (await logoutButton.isDisplayed()) {
                 await logoutButton.click();
-                await driver.wait(until.urlContains(LOGIN_URL), 5000); // Wait for the login page to load
+                await driver.wait(until.urlContains(LOGIN_URL), 5000);
             }
         } catch (error) {
-            console.log('User not logged in or logout button not found.');
+            // 
         }
     }
 
-    // Ensures that the user is logged out before each test case
     afterEach(async () => {
         await logoutIfLoggedIn();
     });
@@ -133,9 +135,6 @@ describe('User Profile Functionality Test', function () {
 
             // Step 2: Navigate to the login page and log in with the current user's credentials
             await navigateToLoginPage();
-
-            const loginButton = await driver.findElement(By.xpath('//button[contains(@class, "login-button")]'));
-            await loginButton.click();
 
             await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
             await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
@@ -204,7 +203,7 @@ describe('User Profile Functionality Test', function () {
                 'The success message is incorrect.'
             );
 
-            // Step 8: Ensure the user stays on the same page after updating the profile
+            // Ensure the user stays on the same page after updating the profile
             const currentUrl2 = await driver.getCurrentUrl();
             assert.strictEqual(currentUrl2, currentUrl2, "User should stay on the same page after successful update");
         });

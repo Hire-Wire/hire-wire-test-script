@@ -32,7 +32,7 @@ const fs = require('fs'); // File system for handling profile data
 const credentials = require('./Profile.json');
 
 // Application URLs
-const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login'; // Login page URL
 const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Job application page URL after login
 const TIMEOUT = 30000; // Global timeout for tests
 
@@ -79,15 +79,20 @@ describe('Login Functionality Test', function () {
      */
     async function logoutIfLoggedIn() {
         try {
-            const logoutButton = await driver.findElement(By.css('button[type="logout"]'));
+            // Locate the logout button using XPath
+            const logoutButton = await driver.findElement(By.xpath('//button[@type="logout"]'));
+            
+            // Check if the button is displayed and clickable
             if (await logoutButton.isDisplayed()) {
                 await logoutButton.click();
-                await driver.wait(until.urlContains(LOGIN_URL), 5000); // Wait for the login page to load
+                // Wait until the URL changes back to the login page
+                await driver.wait(until.urlContains(LOGIN_URL), 5000);
             }
         } catch (error) {
-            // No action needed if the user is not logged in
+            // No action needed if the logout button is not found or not displayed
         }
     }
+    
 
     // Ensure logout after each test case
     afterEach(async () => {
@@ -104,22 +109,36 @@ describe('Login Functionality Test', function () {
             await navigateToLoginPage();
             
             // Step 3: Click the login button to open the login form
-            const loginbtn = await driver.findElement(By.className('login-button'));
-            await loginbtn.click();
 
             // Step 4: Fill in the email and password fields with the user's credentials
-            await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
-            await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
+            // await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
+            // await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
+
+            const emailInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Email"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(emailInput), 5000);
+            await emailInput.sendKeys(user.emailAddress);
+        
+            // Wait for the password field to appear and send password
+            const passwordInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Password"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(passwordInput), 5000);
+            await passwordInput.sendKeys(user.password);
 
             // Step 5: Submit the login form
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
-            await submitButton.click();            
-            
-           // await navigatetoDashboard();
-           await driver.sleep(100);
+            await submitButton.click();             
+ 
             // Step 6: Verify the user is redirected to the job application page after login
+           await driver.sleep(1000);
             const currentUrl = await driver.getCurrentUrl();   
             assert.strictEqual(currentUrl, DASHBOARD_URL, "User should be directed to Job Application page after successful login");
+            await logoutIfLoggedIn();
+
         });
     });
 });

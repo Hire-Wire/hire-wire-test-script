@@ -1,0 +1,214 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-11-20T09:14:37.155Z",
+    "end": "2024-11-20T09:15:43.988Z",
+    "duration": 66833,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2da3e273-0f57-4780-b65f-08ee2d539208",
+      "title": "",
+      "fullFile": "C:\\Users\\talla\\OneDrive\\Desktop\\Laxmi\\MEng\\ENSF608\\hire-wire-test-script\\test\\generate_resume_coverletter_test.js",
+      "file": "\\generate_resume_coverletter_test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+          "title": "Generate Resume and Cover Letter Functionality Test",
+          "fullFile": "C:\\Users\\talla\\OneDrive\\Desktop\\Laxmi\\MEng\\ENSF608\\hire-wire-test-script\\test\\generate_resume_coverletter_test.js",
+          "file": "\\generate_resume_coverletter_test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Generate Resume and Cover Letter Functionality Test\"",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test \"before all\" hook in \"Generate Resume and Cover Letter Functionality Test\"",
+              "timedOut": false,
+              "duration": 924,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    driver = await new Builder().forBrowser('chrome').build();\n} catch (error) {\n    console.error('Error initializing the WebDriver:', error);\n}",
+              "err": {},
+              "uuid": "52bd966b-6168-4b30-98f8-cf272ab877c8",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Generate Resume and Cover Letter Functionality Test\"",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test \"after all\" hook in \"Generate Resume and Cover Letter Functionality Test\"",
+              "timedOut": false,
+              "duration": 57,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n    await driver.quit();\n} catch (error) {\n    console.error('Error quitting the WebDriver:', error);\n}",
+              "err": {},
+              "uuid": "6a55bd6d-2bb9-40f7-90d7-f6635163e3e4",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Use case 1: ",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test Use case 1: ",
+              "timedOut": false,
+              "duration": 10192,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Ensure the user is logged out if already logged in\nawait logoutIfLoggedIn();\n// Step 2: Navigate to the login page and log in with the current user's credentials\nawait navigateToLoginPage();\nconst emailInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Email\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(emailInput), 5000);\nawait emailInput.sendKeys(user.emailAddress);\n        \n// Wait for the password field to appear and send password\nconst passwordInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Password\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(passwordInput), 5000);\nawait passwordInput.sendKeys(user.password);\n//Submit the login form\nconst submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\nawait submitButton.click();    \n// Step 3: Verify the user is redirected to the dashboard page after login\nawait driver.sleep(1000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, APPLICATION_URL, `User cannot login with these credentials to generate cover letter and resume.`);\n// Step 4: Navigate to the job application page\nawait navigateToApplicationPage();\n// Step 5: Fill out the job application form with the user's job-related data\nawait driver.findElement(By.xpath('//input[@placeholder=\"Job title (required)\"]')).sendKeys(user.jobTitle);\nawait driver.findElement(By.xpath('//input[@placeholder=\"Company (required)\"]')).sendKeys(user.company);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Job description / information... (required)\"]')).sendKeys(user.description);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Write additional information about yourself (Optional). This prompt will help us tailor your application to your needs.\"]')).sendKeys(user.additionalInformation);\n\n// Step 6: Click the \"Generate\" button to create the resume\nconst generateButton = await driver.findElement(By.xpath('//button[contains(@class, \"generate-button\")]'));\nawait generateButton.click();\n// Step 7: Verify that the generated resume content appears on the page\nconst generatedContent = await driver.wait(\n    until.elementLocated(By.css('.generated-content')), 5000\n);\nawait driver.sleep(6000);\nconst generatedText = await generatedContent.getText();\nassert.ok(\n    generatedText.includes('Generated Resume'),\n    'The generated resume should appear on the page'\n);",
+              "err": {},
+              "uuid": "b4041f95-a169-41e5-8784-358b53b8f85e",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Use case 2: ",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test Use case 2: ",
+              "timedOut": false,
+              "duration": 13815,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Ensure the user is logged out if already logged in\nawait logoutIfLoggedIn();\n// Step 2: Navigate to the login page and log in with the current user's credentials\nawait navigateToLoginPage();\nconst emailInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Email\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(emailInput), 5000);\nawait emailInput.sendKeys(user.emailAddress);\n        \n// Wait for the password field to appear and send password\nconst passwordInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Password\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(passwordInput), 5000);\nawait passwordInput.sendKeys(user.password);\n//Submit the login form\nconst submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\nawait submitButton.click();    \n// Step 3: Verify the user is redirected to the dashboard page after login\nawait driver.sleep(1000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, APPLICATION_URL, `User cannot login with these credentials to generate cover letter and resume.`);\n// Step 4: Navigate to the job application page\nawait navigateToApplicationPage();\n// Step 5: Fill out the job application form with the user's job-related data\nawait driver.findElement(By.xpath('//input[@placeholder=\"Job title (required)\"]')).sendKeys(user.jobTitle);\nawait driver.findElement(By.xpath('//input[@placeholder=\"Company (required)\"]')).sendKeys(user.company);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Job description / information... (required)\"]')).sendKeys(user.description);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Write additional information about yourself (Optional). This prompt will help us tailor your application to your needs.\"]')).sendKeys(user.additionalInformation);\n\n// Step 6: Click the \"Generate\" button to create the resume\nconst generateButton = await driver.findElement(By.xpath('//button[contains(@class, \"generate-button\")]'));\nawait generateButton.click();\n// Step 7: Verify that the generated resume content appears on the page\nconst generatedContent = await driver.wait(\n    until.elementLocated(By.css('.generated-content')), 5000\n);\nawait driver.sleep(6000);\nconst generatedText = await generatedContent.getText();\nassert.ok(\n    generatedText.includes('Generated Resume'),\n    'The generated resume should appear on the page'\n);",
+              "err": {},
+              "uuid": "7b25f11f-8a91-4e01-b4e1-877bfd22272c",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Use case 3: ",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test Use case 3: ",
+              "timedOut": false,
+              "duration": 13783,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Ensure the user is logged out if already logged in\nawait logoutIfLoggedIn();\n// Step 2: Navigate to the login page and log in with the current user's credentials\nawait navigateToLoginPage();\nconst emailInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Email\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(emailInput), 5000);\nawait emailInput.sendKeys(user.emailAddress);\n        \n// Wait for the password field to appear and send password\nconst passwordInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Password\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(passwordInput), 5000);\nawait passwordInput.sendKeys(user.password);\n//Submit the login form\nconst submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\nawait submitButton.click();    \n// Step 3: Verify the user is redirected to the dashboard page after login\nawait driver.sleep(1000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, APPLICATION_URL, `User cannot login with these credentials to generate cover letter and resume.`);\n// Step 4: Navigate to the job application page\nawait navigateToApplicationPage();\n// Step 5: Fill out the job application form with the user's job-related data\nawait driver.findElement(By.xpath('//input[@placeholder=\"Job title (required)\"]')).sendKeys(user.jobTitle);\nawait driver.findElement(By.xpath('//input[@placeholder=\"Company (required)\"]')).sendKeys(user.company);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Job description / information... (required)\"]')).sendKeys(user.description);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Write additional information about yourself (Optional). This prompt will help us tailor your application to your needs.\"]')).sendKeys(user.additionalInformation);\n\n// Step 6: Click the \"Generate\" button to create the resume\nconst generateButton = await driver.findElement(By.xpath('//button[contains(@class, \"generate-button\")]'));\nawait generateButton.click();\n// Step 7: Verify that the generated resume content appears on the page\nconst generatedContent = await driver.wait(\n    until.elementLocated(By.css('.generated-content')), 5000\n);\nawait driver.sleep(6000);\nconst generatedText = await generatedContent.getText();\nassert.ok(\n    generatedText.includes('Generated Resume'),\n    'The generated resume should appear on the page'\n);",
+              "err": {},
+              "uuid": "a32f6eca-e5db-45b3-adc7-c64e487d0c71",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Use case 4: ",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test Use case 4: ",
+              "timedOut": false,
+              "duration": 14053,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Ensure the user is logged out if already logged in\nawait logoutIfLoggedIn();\n// Step 2: Navigate to the login page and log in with the current user's credentials\nawait navigateToLoginPage();\nconst emailInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Email\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(emailInput), 5000);\nawait emailInput.sendKeys(user.emailAddress);\n        \n// Wait for the password field to appear and send password\nconst passwordInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Password\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(passwordInput), 5000);\nawait passwordInput.sendKeys(user.password);\n//Submit the login form\nconst submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\nawait submitButton.click();    \n// Step 3: Verify the user is redirected to the dashboard page after login\nawait driver.sleep(1000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, APPLICATION_URL, `User cannot login with these credentials to generate cover letter and resume.`);\n// Step 4: Navigate to the job application page\nawait navigateToApplicationPage();\n// Step 5: Fill out the job application form with the user's job-related data\nawait driver.findElement(By.xpath('//input[@placeholder=\"Job title (required)\"]')).sendKeys(user.jobTitle);\nawait driver.findElement(By.xpath('//input[@placeholder=\"Company (required)\"]')).sendKeys(user.company);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Job description / information... (required)\"]')).sendKeys(user.description);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Write additional information about yourself (Optional). This prompt will help us tailor your application to your needs.\"]')).sendKeys(user.additionalInformation);\n\n// Step 6: Click the \"Generate\" button to create the resume\nconst generateButton = await driver.findElement(By.xpath('//button[contains(@class, \"generate-button\")]'));\nawait generateButton.click();\n// Step 7: Verify that the generated resume content appears on the page\nconst generatedContent = await driver.wait(\n    until.elementLocated(By.css('.generated-content')), 5000\n);\nawait driver.sleep(6000);\nconst generatedText = await generatedContent.getText();\nassert.ok(\n    generatedText.includes('Generated Resume'),\n    'The generated resume should appear on the page'\n);",
+              "err": {},
+              "uuid": "45e02f35-2ae8-428e-afb6-c7812286ed1e",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Use case 5: ",
+              "fullTitle": "Generate Resume and Cover Letter Functionality Test Use case 5: ",
+              "timedOut": false,
+              "duration": 13999,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Ensure the user is logged out if already logged in\nawait logoutIfLoggedIn();\n// Step 2: Navigate to the login page and log in with the current user's credentials\nawait navigateToLoginPage();\nconst emailInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Email\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(emailInput), 5000);\nawait emailInput.sendKeys(user.emailAddress);\n        \n// Wait for the password field to appear and send password\nconst passwordInput = await driver.wait(\n    until.elementLocated(By.xpath('//input[@placeholder=\"Password\"]')),\n    5000\n);\nawait driver.wait(until.elementIsVisible(passwordInput), 5000);\nawait passwordInput.sendKeys(user.password);\n//Submit the login form\nconst submitButton = await driver.findElement(By.xpath('//button[@type=\"submit\"]'));\nawait submitButton.click();    \n// Step 3: Verify the user is redirected to the dashboard page after login\nawait driver.sleep(1000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, APPLICATION_URL, `User cannot login with these credentials to generate cover letter and resume.`);\n// Step 4: Navigate to the job application page\nawait navigateToApplicationPage();\n// Step 5: Fill out the job application form with the user's job-related data\nawait driver.findElement(By.xpath('//input[@placeholder=\"Job title (required)\"]')).sendKeys(user.jobTitle);\nawait driver.findElement(By.xpath('//input[@placeholder=\"Company (required)\"]')).sendKeys(user.company);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Job description / information... (required)\"]')).sendKeys(user.description);\nawait driver.findElement(By.xpath('//textarea[@placeholder=\"Write additional information about yourself (Optional). This prompt will help us tailor your application to your needs.\"]')).sendKeys(user.additionalInformation);\n\n// Step 6: Click the \"Generate\" button to create the resume\nconst generateButton = await driver.findElement(By.xpath('//button[contains(@class, \"generate-button\")]'));\nawait generateButton.click();\n// Step 7: Verify that the generated resume content appears on the page\nconst generatedContent = await driver.wait(\n    until.elementLocated(By.css('.generated-content')), 5000\n);\nawait driver.sleep(6000);\nconst generatedText = await generatedContent.getText();\nassert.ok(\n    generatedText.includes('Generated Resume'),\n    'The generated resume should appear on the page'\n);",
+              "err": {},
+              "uuid": "4c7213b1-ede8-4700-8fe8-9898f7ebc77d",
+              "parentUUID": "3e9d5f3e-9e31-48d1-ae6e-bd97aff38e53",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b4041f95-a169-41e5-8784-358b53b8f85e",
+            "7b25f11f-8a91-4e01-b4e1-877bfd22272c",
+            "a32f6eca-e5db-45b3-adc7-c64e487d0c71",
+            "45e02f35-2ae8-428e-afb6-c7812286ed1e",
+            "4c7213b1-ede8-4700-8fe8-9898f7ebc77d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 65842,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.8.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

@@ -35,7 +35,7 @@ require('chromedriver'); // Ensure chromedriver is available for browser automat
 const credentials = require('./ResumeGeneration_data.json');
 
 // Application URLs
-const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/'; // Login page URL
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login'; // Login page URL
 const APPLICATION_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication'; // Job application page URL after login
 const TIMEOUT = 30000; // Timeout for the tests
 
@@ -79,13 +79,17 @@ describe('Generate Resume and Cover Letter Functionality Test', function () {
      */
     async function logoutIfLoggedIn() {
         try {
-            const logoutButton = await driver.findElement(By.css('button[type="logout"]'));
+            // Locate the logout button using XPath
+            const logoutButton = await driver.findElement(By.xpath('//button[@type="logout"]'));
+            
+            // Check if the button is displayed and clickable
             if (await logoutButton.isDisplayed()) {
                 await logoutButton.click();
-                await driver.wait(until.urlContains(LOGIN_URL), 5000); // Wait for the login page to load
+                // Wait until the URL changes back to the login page
+                await driver.wait(until.urlContains(LOGIN_URL), 5000);
             }
         } catch (error) {
-            // Ignore errors if the user is not logged in
+            // No action needed if the logout button is not found or not displayed
         }
     }
 
@@ -109,21 +113,31 @@ describe('Generate Resume and Cover Letter Functionality Test', function () {
         it(`Use case ${index + 1}: `, async () => {
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
+
             // Step 2: Navigate to the login page and log in with the current user's credentials
             await navigateToLoginPage();
-            const loginbtn = await driver.findElement(By.className('login-button'));
-            await loginbtn.click();
 
-            await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
-            await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
+            const emailInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Email"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(emailInput), 5000);
+            await emailInput.sendKeys(user.emailAddress);
+        
+            // Wait for the password field to appear and send password
+            const passwordInput = await driver.wait(
+                until.elementLocated(By.xpath('//input[@placeholder="Password"]')),
+                5000
+            );
+            await driver.wait(until.elementIsVisible(passwordInput), 5000);
+            await passwordInput.sendKeys(user.password);
 
-            // Step 5: Submit the login form
+            //Submit the login form
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
-            await submitButton.click();            
- 
+            await submitButton.click();    
 
-            await driver.sleep(1000);
             // Step 3: Verify the user is redirected to the dashboard page after login
+            await driver.sleep(1000);
             const currentUrl = await driver.getCurrentUrl();
             assert.strictEqual(currentUrl, APPLICATION_URL, `User cannot login with these credentials to generate cover letter and resume.`);
 

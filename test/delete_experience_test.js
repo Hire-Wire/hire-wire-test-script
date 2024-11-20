@@ -31,7 +31,7 @@ const fs = require('fs');
 
 const credentials = require('./Profile.json');
 
-const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/';
+const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login';
 const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication';
 const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile';
 const EXPERIENCE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/experience';
@@ -91,13 +91,17 @@ describe('Delete Experience from User Profile Functionality Test', function () {
      */
     async function logoutIfLoggedIn() {
         try {
-            const logoutButton = await driver.findElements(By.xpath('//button[@type="logout"]'));
-            if (logoutButton.length > 0 && await logoutButton[0].isDisplayed()) {
-                await logoutButton[0].click();
-                await driver.wait(until.urlContains(LOGIN_URL), 500); // Wait for the login page to load
+            // Locate the logout button using XPath
+            const logoutButton = await driver.findElement(By.xpath('//button[@type="logout"]'));
+            
+            // Check if the button is displayed and clickable
+            if (await logoutButton.isDisplayed()) {
+                await logoutButton.click();
+                // Wait until the URL changes back to the login page
+                await driver.wait(until.urlContains(LOGIN_URL), 5000);
             }
         } catch (error) {
-            // Ignore the error if logout button is not found
+            // No action needed if the logout button is not found or not displayed
         }
     }
 
@@ -114,16 +118,13 @@ describe('Delete Experience from User Profile Functionality Test', function () {
             await navigateToLoginPage();
 
             // Step 2: Log in using valid credentials from the Profile.json file
-            const loginBtn = await driver.findElement(By.className('login-button'));
-            await loginBtn.click();
-
             await driver.sleep(100);
             await driver.findElement(By.xpath('//input[@placeholder="Email"]')).sendKeys(user.emailAddress);
             await driver.findElement(By.xpath('//input[@placeholder="Password"]')).sendKeys(user.password);
             const submitButton = await driver.findElement(By.xpath('//button[@type="submit"]'));
             await submitButton.click();
 
-            await driver.sleep(500);
+            await driver.sleep(600);
             // Step 3: Verify that the user is redirected to the dashboard after login
             const currentUrl = await driver.getCurrentUrl();
             assert.strictEqual(currentUrl, DASHBOARD_URL, `User cannot add their job experience because they cannot log in with these credentials.`);
@@ -131,19 +132,21 @@ describe('Delete Experience from User Profile Functionality Test', function () {
             // Step 4: Navigate to the experience page
             await navigateToExperiencePage();
             
+            // Step 5: Attempt to delete a job experience by clicking the delete button
 
-            try {
-                // Step 5: Attempt to delete a job experience by clicking the delete button
-                const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, "remove-button") and @type="button"]'));
-                assert.strict(deleteButton, 'There is no experience to delete');
-                
-                //  step 6. Verify that the experience is present to delete.
-                await deleteButton.click();
-                await driver.sleep(100);
-            } catch (error) {
-                // Handle case where delete button is not found
-                assert.fail('There is no experience to delete');
-            }
+            // Wait for the element to be located with a timeout of 1000ms
+            await driver.wait(until.elementLocated(By.xpath('//button[contains(@class, "remove-button") and @type="button"]')), 1000);
+            
+            // Find the delete button after waiting
+            const deleteButton = await driver.findElement(By.xpath('//button[contains(@class, "remove-button") and @type="button"]'));
+        
+            //assert.strictEqual(deleteButton.length, 0, 'There is no experiencce to remove');
+            
+            //  step 6. Verify that the experience is present to delete.
+            
+            await deleteButton.click();
+            await driver.sleep(500);
+
         });
     });
 });
