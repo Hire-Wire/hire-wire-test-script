@@ -3,6 +3,7 @@
 ## Overview
 
 This repository contains an automated test suite built with **Selenium WebDriver** to validate core functionalities of the **HireWire Resume and Cover letter generation** application. The test suite covers modules such as user registration, login, profile update, job and education experience management, and resume generation. The tests are designed to ensure that key user interactions with the application work correctly and meet the expected behavior.
+The test results are automatically generated and saved in the test\mochawesome-report folder in HTML format. The data used for testing is located in the data folder.
 
 ## Modules Covered
 
