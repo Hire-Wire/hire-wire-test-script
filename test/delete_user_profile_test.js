@@ -34,6 +34,7 @@ const fs = require('fs');
 // Import user credentials from the Profile.json file
 const credentials = require('./Profile.json');
 
+HOMEPAGE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/';
 const LOGIN_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/login';
 const DASHBOARD_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/jobapplication';
 const PROFILE_URL = 'https://hirewire-app-8efe6492bdf7.herokuapp.com/userprofile';
@@ -157,7 +158,8 @@ describe('User Profile Deletion Functionality Test', function () {
 
             // Step 4: Navigate to the profile page
             await navigateToProfilePage();
-
+            await driver.sleep(2000); 
+            
             // Step 5: Click the delete button to delete the user profile
             const deleteButton = await driver.wait(until.elementLocated(By.xpath('//button[contains(@class, "delete-user-profile-button") and @type="button"]')), TIMEOUT);
             await deleteButton.click();
@@ -168,10 +170,11 @@ describe('User Profile Deletion Functionality Test', function () {
             const alert = await driver.switchTo().alert();
             await alert.accept();
 
-             await driver.wait(until.urlIs(LOGIN_URL), 2000);
+            
             // Step 7: Verify that the user is redirected to the homepage after deletion
+            await driver.sleep(500);
             const currentUrl2 = await driver.getCurrentUrl();
-            assert.strictEqual(LOGIN_URL, currentUrl2, "After successful deletion of the user, the page should be directed to the homepage");
+            assert.strictEqual(HOMEPAGE_URL, currentUrl2, "After successful deletion of the user, the page should be directed to the homepage");
         });
     });
 });

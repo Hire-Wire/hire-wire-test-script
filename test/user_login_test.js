@@ -101,7 +101,7 @@ describe('Login Functionality Test', function () {
 
 
     credentials.forEach((user, index) => {
-        it(`Test Case ${index + 1}: `, async () => {
+        it(`Use Case ${index + 1}: `, async () => {
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
 

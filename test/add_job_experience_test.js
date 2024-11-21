@@ -95,7 +95,7 @@ describe('Add Job Experience Functionality Test', function () {
     }
 
     credentials.forEach((user, index) => {
-        it(`Use Case ${index + 1}`, async () => {
+        it(`Test Case ${index + 1}`, async () => {
             
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
@@ -128,7 +128,7 @@ describe('Add Job Experience Functionality Test', function () {
 
             // Step 4: Navigate to experience page
             await navigateToPage(EXPERIENCE_URL);
-
+            await driver.sleep(1000); 
             for ( experience of user.workExperience) {
 
             await driver.sleep(1000);  
@@ -168,6 +168,7 @@ describe('Add Job Experience Functionality Test', function () {
             //save the education entries
             const saveBtn = await driver.findElement(By.css('button.save-button'));
             await saveBtn.click();
+
         }
 
             }

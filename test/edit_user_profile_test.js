@@ -47,7 +47,7 @@ const TIMEOUT = 30000; // Timeout for the tests
 /**
  * @description Suite for testing user profile functionality, including login, profile form submission, and error/success message validation.
  */
-describe('User Profile Functionality Test', function () {
+describe('User Profile Update Functionality Test', function () {
     this.timeout(TIMEOUT); // Set global timeout for all tests in this suite
 
     let driver; // WebDriver instance
@@ -128,7 +128,7 @@ describe('User Profile Functionality Test', function () {
 
 
     credentials.forEach((user, index) => {
-        it(`User Profile Test ${index + 1}`, async () => {
+        it(`User Case ${index + 1}`, async () => {
 
             // Step 1: Ensure the user is logged out if already logged in
             await logoutIfLoggedIn();
@@ -148,7 +148,7 @@ describe('User Profile Functionality Test', function () {
 
             // Step 4: Navigate to the user profile page
             await navigateToProfilePage();
-
+            await driver.sleep(500); 
             // Step 5: Fill out the profile form with the user's data
             const firstName = await driver.findElement(By.xpath('//input[@placeholder="First Name (required)"]'));
             await firstName.clear();

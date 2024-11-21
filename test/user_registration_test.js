@@ -86,7 +86,7 @@ describe('User Registration Functionality Test', function () {
     });
 
     credentials.forEach((user, index) => {
-        it(`Test Case ${index + 1}:`, async () => {
+        it(`Use Case ${index + 1}:`, async () => {
             // Step 1: Navigate to the registration page
             await navigateToRegistrationPage();
             console.log("Email:", user.emailAddress);
